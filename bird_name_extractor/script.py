@@ -40,7 +40,7 @@ class ExtractValuesFromRemotePage(object):
         pass
 
     def write_into_file(self):
-        with open("{}.txt".format(self.file_name)) as bn:
+        with open("{}.txt".format(self.file_name), "w+") as bn:
             bn.writelines(repr(self.bird_names))
 
     def run(self):
