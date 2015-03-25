@@ -1,0 +1,1 @@
+[('Ak kuyruklu kartal', 'Haliaeetus albicilla'), ('Saz delicesi', 'Circus aeruginosus')]
