@@ -31,7 +31,7 @@ class ExtractValuesFromRemotePage(object):
         req = urllib2.Request(self.url)
         response = urllib2.urlopen(req)
         self.the_page = response.read()
-        with open("{}_html.txt".format(self.file_name), "w+") as wp:
+        with open("temp/{}_html.txt".format(self.file_name), "w+") as wp:
             wp.writelines(self.the_page)
 
     def save_to_database(self):
@@ -49,7 +49,7 @@ class ExtractValuesFromRemotePage(object):
                 pass
 
     def write_into_file(self):
-        with open("{}.txt".format(self.file_name), "w+") as bn:
+        with open("temp/{}.txt".format(self.file_name), "w+") as bn:
             bn.writelines(repr(self.bird_names))
 
     def run(self):
