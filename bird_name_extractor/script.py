@@ -64,7 +64,8 @@ class WikiTurkiye(ExtractValuesFromRemotePage):
     def __init__(self):
         ExtractValuesFromRemotePage.__init__(self)
         self.url = "http://tr.wikipedia.org/wiki/T%C3%BCrkiye_ku%C5%9Flar_listesi"
-        self.rgx = '<li><a\shref="/wiki/\w+"\stitle="[\w\s]+"\sclass="mw-redirect">([\w\s]+)</.*?\s\(<i>([\w\s]+)</i>\).*?/li>'
+        # self.rgx = '<li><a\shref="/wiki/\w+"\stitle="[\w\s]+"\sclass="mw-redirect">([\w\s]+)</.*?\s\(<i>([\w\s]+)</i>\).*?/li>'
+        self.rgx = '<li><a\shref="/wiki/[\w_]+"\stitle="[\w\s]+"\sclass="mw-redirect">(.*?)</.*?\s\(<i>([\w\s\'\-]+)</i>\).*?/li>'
         self.file_name = self.class_name()
 
 
@@ -72,7 +73,8 @@ class WikiLOBOTW(WikiTurkiye):
     def __init__(self):
         WikiTurkiye.__init__(self)
         self.url = "http://en.wikipedia.org/wiki/List_of_birds_of_the_world"
-        self.rgx = '<li><i><a\shref="/wiki/[\w_]+"\stitle="[\w\s]+"\sclass="mw-redirect">([\w\s]+)</.*?/i>([\w\s]+)<.*?li>'
+        # self.rgx = '<li><i><a\shref="/wiki/[\w_]+"\stitle="[\w\s]+"\sclass="mw-redirect">([\w\s]+)</.*?/i>([\w\s]+)<.*?li>'
+        self.rgx = '<li><i><a\shref="/wiki/[\w_]+"\stitle="[\w\s]+"\sclass="mw-redirect">([\w\s]+)</a></i>\s([\w\s\'\-]+).*?/li>'
         self.file_name = self.class_name()
 
 
