@@ -3,7 +3,7 @@ import logging
 import os
 from logging import handlers
 from datetime import date
-from RandomBirdNameAPI.settings import ABS_PATH
+from RandomBirdNameAPI.settings import BASE_DIR
 
 __author__ = 'Remind Bird'
 
@@ -21,7 +21,7 @@ class Loglayici:
         self.loger = None
         self.formatter = None
         self.handler = handler
-        self.log_dir = "{}/{}".format(ABS_PATH, log_dir)
+        self.log_dir = "{}/{}".format(BASE_DIR, log_dir)
         self.log_format = log_format
         self.level = level.upper()
         self.log_format = u"%(asctime)s %(levelname)s %(name)s %(process)d %(threadName)s %(module)s: " \
