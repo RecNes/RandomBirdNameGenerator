@@ -10,5 +10,9 @@ urlpatterns = patterns('',
 
     url(r'^admin/', include(admin.site.urls)),
 
+    url(r'^bird_name_requested/$', 'rbnapi.views.bird_name_requested', name='bird_name_requested'),
     url(r'^$', 'rbnapi.views.start_page', name='index'),  # HTML Anasayfa
-) + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
+)
+
+# + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
