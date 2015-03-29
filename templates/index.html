@@ -91,20 +91,22 @@
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <div class="intro-text">
-                        <span class="name">To generate random bird name, click the button below</span>
+                        <h2>To generate random bird name,<br />click the button below</h2>
                         <hr class="star-primary">
-                        <button class="active" name="rabn" id="rabn" value="Generate Bird Name">
+                        <button class="btn btn-default" name="rabn" id="rabn" value="Generate Bird Name">
+                            <i class="fa fa-angle-double-down"></i>
                             Generate Bird Name
+                            <i class="fa fa-angle-double-down"></i>
                         </button>
                     </div>
                     <br class="clearfix" />
-                    <div style="display: none; background-color: lightgreen;"
-                         class="btn btn-outline"
-                         id="show_bird_name">
+                    <div style="display: none; background-color: #88e088;" class="btn btn-outline" id="show_bird_name">
                         <p>
                             Your bird name is<br />
                             <h3 id="bn"></h3><br />
-                            <span class="text-danger">click here to copy name in to clip board</span>
+                            <span class="info">click here to copy name in to clip board</span>
+                            <br />
+                            <span class="check" style="display: none;"><i class="fa fa-check-circle"></i> copied to clipboard</span>
                         </p>
                     </div>
                 </div>
@@ -122,16 +124,28 @@
             </div>
             <div class="row">
                 <div class="col-lg-4 col-lg-offset-2">
-                    <p>Freelancer is a free bootstrap theme created by Start Bootstrap. The download includes the complete source files including HTML, CSS, and JavaScript as well as optional LESS stylesheets for easy customization.</p>
+                    <p>
+                        This is the free service for who wants to stay anonymous, but lazy to create a nick name. Random
+                        Bird Name Generator is exactly for those people who are do not want waste their time to create
+                        an anonymous nickname. Just press button above, and Random Bird Name Generator does the magic
+                        for you and give you a nickname. Then start to use your anonym name where ever you want.
+                    </p>
                 </div>
                 <div class="col-lg-4">
-                    <p>Whether you're a student looking to showcase your work, a professional looking to attract clients, or a graphic artist looking to share your projects, this template is the perfect starting point!</p>
+                    <p>
+                        Coming Soon!<br />
+                        <br />
+                        The API of this service is still under development. The websites who want to be provide
+                        anonymity to their new registered users can be able to use this API. During the registration
+                        process, you can hit to the API before creating user account and get a random bird name as a
+                        nickname for new registrations.
+                    </p>
                 </div>
-                <div class="col-lg-8 col-lg-offset-2 text-center">
-                    <a href="#" class="btn btn-lg btn-outline">
-                        <i class="fa fa-download"></i> Download Theme
-                    </a>
-                </div>
+{#                <div class="col-lg-8 col-lg-offset-2 text-center">#}
+{#                    <a href="#" class="btn btn-lg btn-outline">#}
+{#                        <i class="fa fa-download"></i> Download Theme#}
+{#                    </a>#}
+{#                </div>#}
             </div>
         </div>
     </section>
@@ -198,31 +212,32 @@
                 <div class="row">
                     <div class="footer-col col-md-4">
                         <h3>Location</h3>
-                        <p>3481 Melrose Place<br>Beverly Hills, CA 90210</p>
+                        <p>İzmir<br>TURKEY</p>
                     </div>
                     <div class="footer-col col-md-4">
                         <h3>Around the Web</h3>
                         <ul class="list-inline">
                             <li>
-                                <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-facebook"></i></a>
+                                <a href="https://www.facebook.com/RecNesBloG" class="btn-social btn-outline"><i class="fa fa-fw fa-facebook"></i></a>
                             </li>
-                            <li>
-                                <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-google-plus"></i></a>
-                            </li>
-                            <li>
-                                <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-twitter"></i></a>
-                            </li>
-                            <li>
-                                <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-linkedin"></i></a>
-                            </li>
-                            <li>
-                                <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-dribbble"></i></a>
-                            </li>
+{#                            <li>#}
+{#                                <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-google-plus"></i></a>#}
+{#                            </li>#}
+{#                            <li>#}
+{#                                <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-twitter"></i></a>#}
+{#                            </li>#}
+{#                            <li>#}
+{#                                <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-linkedin"></i></a>#}
+{#                            </li>#}
+{#                            <li>#}
+{#                                <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-dribbble"></i></a>#}
+{#                            </li>#}
                         </ul>
                     </div>
                     <div class="footer-col col-md-4">
-                        <h3>About Freelancer</h3>
-                        <p>Freelance is a free to use, open source Bootstrap theme created by <a href="http://startbootstrap.com">Start Bootstrap</a>.</p>
+                        <h3>About Developer</h3>
+                        <p>Random Brid Name Generator for anonymity created by <a href="http://recnes.com">Sencer Hamarat</a>.</p>
+                        <p><i class="fa fa-bug"></i>The Beatles - Free As A Bird</p>
                     </div>
                 </div>
             </div>
@@ -231,7 +246,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
-                        Copyright &copy; Your Website 2014
+                        Copyright &copy; Random Bird Name Generator 2015
                     </div>
                 </div>
             </div>
@@ -248,6 +263,9 @@
 
     <!-- jQuery -->
     <script src="{{ STATIC_URL }}js/jquery.js"></script>
+
+    <!-- ZeroClip -->
+    <script src="{{ STATIC_URL }}js/jquery.zclip.min.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
     <script src="{{ STATIC_URL }}js/bootstrap.min.js"></script>
@@ -266,9 +284,6 @@
     <script src="{{ STATIC_URL }}js/freelancer.js"></script>
 
     <!-- Clipboard JavaScript -->
-{#    <script src="{{ STATIC_URL }}js/zcb/ZeroClipboard.js"></script>#}
-{#    <script src="{{ STATIC_URL }}js/zcb/main.js"></script>#}
-
 </body>
 
 </html>
