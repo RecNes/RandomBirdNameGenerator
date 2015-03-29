@@ -100,14 +100,14 @@
                         </button>
                     </div>
                     <br class="clearfix" />
-                    <div style="display: none; background-color: #88e088;" class="btn btn-outline" id="show_bird_name">
-                        <p>
-                            Your bird name is<br />
-                            <h3 id="bn"></h3><br />
-                            <span class="info">click here to copy name in to clip board</span>
-                            <br />
-                            <span class="check" style="display: none;"><i class="fa fa-check-circle"></i> copied to clipboard</span>
-                        </p>
+                    <div style="display: none; background-color: #88e088;" class="col-lg-pull-1" id="show_bird_name">
+                        <br />
+                        <p>Your bird name is:</p>
+                        <h3 id="bn"></h3><br />
+                        <button id="copy-button" data-clipboard-text="" title="Click to copy me." class="btn btn-outline">Copy to Clipboard</button>
+                        <span class="check" style="display: none;"><i class="fa fa-check-circle"></i> copied to clipboard</span>
+                        <br />
+                        <br />
                     </div>
                 </div>
             </div>
@@ -264,8 +264,8 @@
     <!-- jQuery -->
     <script src="{{ STATIC_URL }}js/jquery.js"></script>
 
-    <!-- ZeroClip -->
-    <script src="{{ STATIC_URL }}js/jquery.zclip.min.js"></script>
+    <!-- ZeroClipboard -->
+    <script src="{{ STATIC_URL }}js/ZeroClipboard.min.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
     <script src="{{ STATIC_URL }}js/bootstrap.min.js"></script>
