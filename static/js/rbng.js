@@ -9,9 +9,9 @@ $('#bird_name_form').submit(function(){
     var bn = $('#bird_name');
     var sn = $('#scientific_name');
     var sbn = $('#show_bird_name');
-    $('.check').hide();
     $.post('/bird_name_requested/', {'sci_check': sc, 'csrfmiddlewaretoken': csrftoken}, function(data){
         sbn.fadeOut(function() {
+            $('.check').hide();  // hide "copied to clipboard" message
             sn.html('').hide();  // If checkbox unchecked clean object html and hide object
             if (sc){
                 var splited_data = data.split(",");
