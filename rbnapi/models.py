@@ -21,8 +21,5 @@ class BirdNameDatabase(models.Model):
     def __unicode__(self):
         return self.bird_name
 
-    def _scientific_unicode(self):
-        return self.scientific_name
-
     class Meta:
         unique_together = ("bird_name", "scientific_name")
