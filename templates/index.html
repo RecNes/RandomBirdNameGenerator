@@ -77,7 +77,7 @@
                     <hr class="star-primary">
                 </div>
                 <div class="col-lg-pull-12 text-center">
-                    <form action="" id="bird_name_form" class="form-inline center-block">{% csrf_token %}
+                    <form action="." id="bird_name_form" class="form-inline center-block">{% csrf_token %}
                         <button class="btn btn-default">
                             <i class="fa fa-angle-double-down"></i>
                             Generate Bird Name
@@ -92,8 +92,8 @@
                 <div style="display: none; background-color: #88e088;" class="col-lg-pull-12 text-center" id="show_bird_name">
                     <br />
                     <p>Your bird name is:</p>
-                    <h3 id="bird_name"></h3>
-                    <h4 id="scientific_name" style="display: none;"></h4>
+                    <h3 id="bird_name">&nbsp;</h3>
+                    <h4 id="scientific_name" style="display: none;">&nbsp;</h4>
                     <button id="copy-button" data-clipboard-text="" title="Click to copy me." class="btn btn-outline">Copy to Clipboard</button>
                     <span class="check" style="display: none;"><i class="fa fa-check-circle"></i> copied to clipboard</span>
                     <br />
