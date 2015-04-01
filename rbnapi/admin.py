@@ -6,11 +6,13 @@ from rbnapi.models import ScientificName, BirdNameDatabase
 class BirdNameDatabaseAdmin(admin.ModelAdmin):
     list_display = ['bird_name', 'scientific_name']
     ordering = ['bird_name']
+    search_fields = ['bird_name']
 
 
 class ScientificNameAdmin(admin.ModelAdmin):
     list_display = ['scientific_name']
     ordering = ['scientific_name']
+    search_fields = ['scientific_name']
 
 
 def admin_register(admin_, namespace):

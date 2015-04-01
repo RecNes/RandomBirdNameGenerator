@@ -28,6 +28,7 @@ class ExtractValuesFromRemotePage(object):
             raise Exception(u'{} regex throws error'.format(self.rgx))
 
     def make_connection(self):
+        self.the_page = None
         req = urllib2.Request(self.url)
         response = urllib2.urlopen(req)
         self.the_page = response.read()
@@ -35,28 +36,37 @@ class ExtractValuesFromRemotePage(object):
             wp.writelines(self.the_page)
 
     def save_to_database(self):
+        duplicate_items = list()
+        self.file_name = "duplicate_items"
         for item in self.bird_names:
             try:
                 bird_name = item[1].strip()
                 scientific_name = item[0].strip()
-                db_sc = ScientificName(scientific_name=scientific_name)
-                db_sc.save()
-                db = BirdNameDatabase(bird_name=bird_name, scientific_name=db_sc)
-                db.save()
+                if not len(BirdNameDatabase.objects.filter(bird_name=bird_name)):
+                    db_sc = ScientificName(scientific_name=scientific_name)
+                    db_sc.save()
+                    db = BirdNameDatabase(bird_name=bird_name, scientific_name=db_sc)
+                    db.save()
+                else:
+                    duplicate_items.append(item)
+                self.bird_names=duplicate_items
+                self.write_into_file()
             except Exception as e:
                 print e
                 log.exception(e)
                 pass
 
     def write_into_file(self):
+        text = str()
         with open("temp/{}.txt".format(self.file_name), "w+") as bn:
-            bn.writelines(repr(self.bird_names))
+            for bnt in self.bird_names:
+                text += "{}\r\n".format(repr(bnt))
+            bn.writelines(text)
 
     def run(self):
         self.make_connection()
         self.bird_names = self.re_machine()
-        # print len(self.bird_names)
-        # self.write_into_file()
+        self.write_into_file()
         self.save_to_database()
 
 
@@ -107,5 +117,5 @@ class AllaboutbirdsOrg(ExtractValuesFromRemotePage):
             self.make_connection()
             self.bird_names += self.re_machine()
             self.counter += 1
-        # self.write_into_file()
+        self.write_into_file()
         self.save_to_database()
