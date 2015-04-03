@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 from random import randint
 from django import forms
+from django.core import serializers
+from django.core.context_processors import request
 from django.http import HttpResponse
 from django.shortcuts import render_to_response
 from django.template.context import RequestContext
@@ -32,18 +34,6 @@ def bird_name_requested(request):
                 return HttpResponse("{},{}".format(bn[0].title(), bn[1].title()))
             else:
                 return HttpResponse(generate_bird_name()[0].title())
-
-
-class API():
-    def __init__(self):
-        pass
-
-    @property
-    def get_random_bird_name(self):
-        return generate_bird_name()
-
-    def serialize_data(self):
-        pass
 
 
 def start_page(request, title="Random Bird Name Generator"):
