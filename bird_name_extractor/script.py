@@ -28,6 +28,7 @@ class ExtractValuesFromRemotePage(object):
             raise Exception(u'{} regex throws error'.format(self.rgx))
 
     def make_connection(self):
+        self.the_page = None
         req = urllib2.Request(self.url)
         response = urllib2.urlopen(req)
         self.the_page = response.read()
@@ -35,29 +36,38 @@ class ExtractValuesFromRemotePage(object):
             wp.writelines(self.the_page)
 
     def save_to_database(self):
+        duplicate_items = list()
+        self.file_name = "duplicate_items"
         for item in self.bird_names:
             try:
                 bird_name = item[1].strip()
                 scientific_name = item[0].strip()
-                db_sc = ScientificName(scientific_name=scientific_name)
-                db_sc.save()
-                db = BirdNameDatabase(bird_name=bird_name, scientific_name=db_sc)
-                db.save()
+                if not len(BirdNameDatabase.objects.filter(bird_name=bird_name)):
+                    db_sc = ScientificName(scientific_name=scientific_name)
+                    db_sc.save()
+                    db = BirdNameDatabase(bird_name=bird_name, scientific_name=db_sc)
+                    db.save()
+                else:
+                    duplicate_items.append(item)
+                self.bird_names=duplicate_items
+                self.write_into_file()
             except Exception as e:
                 print e
                 log.exception(e)
                 pass
 
     def write_into_file(self):
+        text = str()
         with open("temp/{}.txt".format(self.file_name), "w+") as bn:
-            bn.writelines(repr(self.bird_names))
+            for bnt in self.bird_names:
+                text += "{}\r\n".format(repr(bnt))
+            bn.writelines(text)
 
     def run(self):
         self.make_connection()
-        self.bird_names = self.re_machine()
-        # print len(self.bird_names)
+        # self.bird_names = self.re_machine()
         # self.write_into_file()
-        self.save_to_database()
+        # self.save_to_database()
 
 
 class WikiTurkiye(ExtractValuesFromRemotePage):
@@ -76,6 +86,40 @@ class WikiLOBOTW(WikiTurkiye):
         # self.rgx = '<li><i><a\shref="/wiki/[\w_]+"\stitle="[\w\s]+"\sclass="mw-redirect">([\w\s]+)</.*?/i>([\w\s]+)<.*?li>'
         self.rgx = '<li><i><a\shref="/wiki/[\w_]+"\stitle="[\w\s]+"\sclass="mw-redirect">([\w\s]+)</a></i>\s([\w\s\'\-]+).*?/li>'
         self.file_name = self.class_name()
+
+
+class SibleyAndMonroe(WikiTurkiye):
+    def __init__(self):
+        WikiTurkiye.__init__(self)
+        self.url = "http://ces.iisc.ernet.in/hpg/envis/sibleydoc63.html"
+        # self.rgx = "^\s+?\d{1,3}\s+\d{1,4}([\w\s\'-]+)\s+([\w\s\'-]+)$"
+        self.rgx = "\d{1,3}\s{1,4}\d{1,4}\s(\w+\s\w+\s?\w+?)\s+([\w\'-]+\s[\D\w\'-]+\s?[\D\w\'-]+?)"
+        self.file_name = self.class_name()
+
+    def read_file(self):
+        text = str()
+        with open("temp/{}_html.txt".format(self.file_name), "r") as bn:
+            return bn.readlines()
+
+    def run(self):
+        self.make_connection()
+
+    def run2(self):
+        """
+        Go find and replace, turn on "regex" and "match case" and apply below step by step
+        First: "^\s+\d{1,3}\s+\d{1,4}\s"
+        Second: "^\d{1,3}\s+\d{1,4}\s"
+        Third; Do replace "\W[\s]+" with "|"
+
+        Than run this method.
+        """
+        fl = self.read_file()
+        for line in fl:
+            self.the_page = line
+            sline = line.lower().replace("\n", "").split("|")
+            print repr(sline)
+            self.bird_names.append((sline[0], sline[1]))
+        self.save_to_database()
 
 
 class AllaboutbirdsOrg(ExtractValuesFromRemotePage):
@@ -107,5 +151,5 @@ class AllaboutbirdsOrg(ExtractValuesFromRemotePage):
             self.make_connection()
             self.bird_names += self.re_machine()
             self.counter += 1
-        # self.write_into_file()
+        self.write_into_file()
         self.save_to_database()
