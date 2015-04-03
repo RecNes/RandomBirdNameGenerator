@@ -43,7 +43,7 @@ DEFAULT_FROM_EMAIL = 'Random Bird name Generator <info@randombirdnamegenerator.c
 SERVER_EMAIL = 'server@randombirdnamegenerator.com'
 EMAIL_SUBJECT_PREFIX = '[ RBNG ]'
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
