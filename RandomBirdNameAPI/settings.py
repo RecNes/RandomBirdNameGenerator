@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 SECRET_KEY = 's%a3+ow-)an7ezkr3qk+uojr@k9mm&wsq3%hhzv1+tyc5*+29j'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 DEBUG_PROPAGATE_EXCEPTIONS = DEBUG
 TEMPLATE_DEBUG = DEBUG
 
@@ -43,7 +43,7 @@ DEFAULT_FROM_EMAIL = 'Random Bird name Generator <info@randombirdnamegenerator.c
 SERVER_EMAIL = 'server@randombirdnamegenerator.com'
 EMAIL_SUBJECT_PREFIX = '[ RBNG ]'
 
-ALLOWED_HOSTS = ['randombirdnamegenerator.herokuapp.com',]
+ALLOWED_HOSTS = ['randombirdnamegenerator.herokuapp.com']
 
 
 # Application definition
