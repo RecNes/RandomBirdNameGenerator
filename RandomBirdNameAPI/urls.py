@@ -7,6 +7,7 @@ from rbnapi import api
 router = routers.DefaultRouter()
 router.register(r'users', api.UserViewSet)
 router.register(r'groups', api.GroupViewSet)
+router.register(r'rbnapi', api.RBNApiViewSet)
 
 # Wire up our API using automatic URL routing.
 # Additionally, we include login URLs for the browsable API.
