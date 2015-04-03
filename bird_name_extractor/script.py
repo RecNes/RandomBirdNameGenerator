@@ -65,9 +65,9 @@ class ExtractValuesFromRemotePage(object):
 
     def run(self):
         self.make_connection()
-        self.bird_names = self.re_machine()
-        self.write_into_file()
-        self.save_to_database()
+        # self.bird_names = self.re_machine()
+        # self.write_into_file()
+        # self.save_to_database()
 
 
 class WikiTurkiye(ExtractValuesFromRemotePage):
@@ -86,6 +86,33 @@ class WikiLOBOTW(WikiTurkiye):
         # self.rgx = '<li><i><a\shref="/wiki/[\w_]+"\stitle="[\w\s]+"\sclass="mw-redirect">([\w\s]+)</.*?/i>([\w\s]+)<.*?li>'
         self.rgx = '<li><i><a\shref="/wiki/[\w_]+"\stitle="[\w\s]+"\sclass="mw-redirect">([\w\s]+)</a></i>\s([\w\s\'\-]+).*?/li>'
         self.file_name = self.class_name()
+
+
+class SibleyAndMonroe(WikiTurkiye):
+    def __init__(self):
+        WikiTurkiye.__init__(self)
+        self.url = "http://ces.iisc.ernet.in/hpg/envis/sibleydoc63.html"
+        # self.rgx = "^\s+?\d{1,3}\s+\d{1,4}([\w\s\'-]+)\s+([\w\s\'-]+)$"
+        self.rgx = "\d{1,3}\s{1,4}\d{1,4}\s(\w+\s\w+\s?\w+?)\s+([\w\'-]+\s[\D\w\'-]+\s?[\D\w\'-]+?)"
+        self.file_name = self.class_name()
+
+    def read_file(self):
+        text = str()
+        with open("temp/{}_html.txt".format(self.file_name), "r") as bn:
+            return bn.readlines()
+
+    def run(self):
+        self.make_connection()
+
+    def run2(self):
+        fl = self.read_file()
+        self.rgx="[\s]{2,40}"
+        for line in fl:
+            self.the_page = line
+            sline = line.replace(self.re_machine()[0], "|").replace("\n", "")
+            ssline= sline.split("|")
+            self.bird_names.append((ssline[0], ssline[1]))
+        self.save_to_database()
 
 
 class AllaboutbirdsOrg(ExtractValuesFromRemotePage):
