@@ -1,6 +1,6 @@
 # -*- codign: utf-8 -*-
 from django.contrib import admin
-from rbnapi.models import ScientificName, BirdNameDatabase
+from rbnapi.models import ScientificName, BirdNameDatabase, GeneralStatistics
 
 
 class BirdNameDatabaseAdmin(admin.ModelAdmin):
@@ -13,6 +13,12 @@ class ScientificNameAdmin(admin.ModelAdmin):
     list_display = ['scientific_name']
     ordering = ['scientific_name']
     search_fields = ['scientific_name']
+
+
+class GeneralStatisticsAdmin(admin.ModelAdmin):
+    list_display = ['created', 'client_ip', 'bird_name']
+    ordering = ['created']
+    search_fields = ['client_ip']
 
 
 def admin_register(admin_, namespace):
