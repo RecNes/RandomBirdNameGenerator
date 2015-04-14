@@ -11,10 +11,6 @@ class ScientificName(models.Model):
 
 
 class BirdNameDatabase(models.Model):
-    """
-    Data will be extracted from:
-    https://en.wikipedia.org/wiki/List_of_birds_of_the_world
-    """
     scientific_name = models.ForeignKey(ScientificName)
     bird_name = models.TextField(verbose_name=u"Bird Name", unique=True)
 
@@ -23,3 +19,15 @@ class BirdNameDatabase(models.Model):
 
     class Meta:
         unique_together = ("bird_name", "scientific_name")
+
+
+class GeneralStatistics(models.Model):
+    bird_name = models.ForeignKey(BirdNameDatabase)
+    client_ip = models.IPAddressField(verbose_name=u"Client IP")
+    created = models.DateTimeField(verbose_name=u"Request Date", auto_now_add=True)
+
+    def __unicode__(self):
+        return self.created
+
+    class Meta:
+        ordering = ['created',]
