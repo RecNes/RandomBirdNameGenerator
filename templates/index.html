@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Random bird name generator for anonymity">
+    <meta name="author" content="Sencer Hamarat">
+    <title>{{ title }}</title>
+    <link href="{{ STATIC_URL }}css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ STATIC_URL }}css/freelancer.css" rel="stylesheet">
+    <link href="{{ STATIC_URL }}font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body id="page-top" class="index">
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#page-top">{{ title }}</a>
+            </div>
+
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="hidden">
+                        <a href="#page-top"></a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="#generate">Generate</a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="#about">About</a>
+                    </li>
+{#                    <li class="page-scroll">#}
+{#                        <a href="#contact">Contact</a>#}
+{#                    </li>#}
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <img class="img-responsive" src="{{ STATIC_URL }}img/bird_name_256.png" alt="random bird name generator">
+                    <div class="intro-text">
+                        <span class="name">Random Bird name Generator</span>
+                        <hr class="star-light">
+                        <span class="skills">For who wants to be stay anonymous</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Bird Name Generator Section -->
+    <section id="generate">
+        <div class="container">
+            <br />
+            <br />
+            <br />
+            <br />
+            <div class="row">
+                <div class="col-lg-pull-12 text-center">
+                    <h3>To generate random bird name,<br />click the button below</h3>
+                    <hr class="star-primary">
+                </div>
+                <div class="col-lg-pull-12 text-center">
+                    <form action="." id="bird_name_form" class="form-inline center-block">{% csrf_token %}
+                        <button class="btn btn-default">
+                            <i class="fa fa-angle-double-down"></i>
+                            Generate Bird Name
+                            <i class="fa fa-angle-double-down"></i>
+                        </button>
+                        <br class="clearfix" />
+                        <input type="checkbox" class="checkbox" name="get_scientific" id="get_scientific" value="get_scientific" />
+                        <label for="get_scientific">With Scientific Name</label>
+                    </form>
+                </div>
+                <br class="clearfix" />
+                <div style="display: none; background-color: #88e088;" class="col-lg-pull-12 text-center" id="show_bird_name">
+                    <br />
+                    <p>Your bird name is:</p>
+                    <h3 id="bird_name">&nbsp;</h3>
+                    <h4 id="scientific_name" style="display: none;">&nbsp;</h4>
+                    <button id="copy-button" data-clipboard-text="" title="Click to copy me." class="btn btn-outline">Copy to Clipboard</button>
+                    <span class="check" style="display: none;"><i class="fa fa-check-circle"></i> Copied to Clipboard</span>
+                    <br />
+                    <br />
+                </div>
+            </div>
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+        </div>
+    </section>
+    <!-- About Section -->
+    <section class="success" id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2>About</h2>
+                    <hr class="star-light">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-lg-offset-2">
+                    <h4>The Website Service</h4>
+                    <br />
+                    <p>
+                        This is the free service for who wants to stay anonymous, but lazy to create a nick name. Random
+                        Bird Name Generator is exactly for those people who are do not want waste their time to create
+                        an anonymous nickname. Just press button above, and Random Bird Name Generator does the magic
+                        for you and give you a nickname. Then start to use your anonymous name where ever you want.
+                    </p>
+                </div>
+                <div class="col-lg-4">
+                    <h4>The API Service (Coming Soon!)</h4>
+                    <br />
+                    <p>
+                        The API of this service is still under development. The websites which want to be provide
+                        anonymity to their new registered users can be able to use this API. During the registration
+                        process, you can hit to the API before creating user account and get a random bird name as a
+                        nickname for new registrations.
+                    </p>
+                </div>
+{#                <div class="col-lg-5 col-lg-offset-3">#}
+{#                    <h4>Additional Information</h4>#}
+{#                    <br />#}
+{#                    <ul>#}
+{#                        <li>This site using real bird names</li>#}
+{#                        <li>Bird names and scientific names fetched from sites below:</li>#}
+{#                        <ul>#}
+{#                            <li>WikiPedia</li>#}
+{#                        </ul>#}
+{#                    </ul>#}
+{#                </div>#}
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+{#    <section id="contact">#}
+{#        <div class="container">#}
+{#            <div class="row">#}
+{#                <div class="col-lg-12 text-center">#}
+{#                    <h2>Contact Me</h2>#}
+{#                    <hr class="star-primary">#}
+{#                </div>#}
+{#            </div>#}
+{#            <div class="row">#}
+{#                <div class="col-lg-8 col-lg-offset-2">#}
+{#                    <form name="sentMessage" id="contactForm" novalidate>#}
+{#                        <div class="row control-group">#}
+{#                            <div class="form-group col-xs-12 floating-label-form-group controls">#}
+{#                                <label>Name</label>#}
+{#                                <input type="text" class="form-control" placeholder="Name" id="name" required data-validation-required-message="Please enter your name.">#}
+{#                                <p class="help-block text-danger"></p>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                        <div class="row control-group">#}
+{#                            <div class="form-group col-xs-12 floating-label-form-group controls">#}
+{#                                <label>Email Address</label>#}
+{#                                <input type="email" class="form-control" placeholder="Email Address" id="email" required data-validation-required-message="Please enter your email address.">#}
+{#                                <p class="help-block text-danger"></p>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                        <div class="row control-group">#}
+{#                            <div class="form-group col-xs-12 floating-label-form-group controls">#}
+{#                                <label>Phone Number</label>#}
+{#                                <input type="tel" class="form-control" placeholder="Phone Number" id="phone" required data-validation-required-message="Please enter your phone number.">#}
+{#                                <p class="help-block text-danger"></p>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                        <div class="row control-group">#}
+{#                            <div class="form-group col-xs-12 floating-label-form-group controls">#}
+{#                                <label>Message</label>#}
+{#                                <textarea rows="5" class="form-control" placeholder="Message" id="message" required data-validation-required-message="Please enter a message."></textarea>#}
+{#                                <p class="help-block text-danger"></p>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                        <br>#}
+{#                        <div id="success"></div>#}
+{#                        <div class="row">#}
+{#                            <div class="form-group col-xs-12">#}
+{#                                <button type="submit" class="btn btn-success btn-lg">Send</button>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                    </form>#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
+{#    </section>#}
+
+    <!-- Footer -->
+    <footer class="text-center">
+        <div class="footer-above">
+            <div class="container">
+                <div class="row">
+                    <div class="footer-col col-md-4">
+                        <h3>Counter</h3>
+                        <p><span id="counter"></span> times bird name generated.</p>
+                    </div>
+                    <div class="footer-col col-md-4">
+                        <h3>Around the Web</h3>
+                        <ul class="list-inline">
+                            <li>
+                                <a href="https://www.facebook.com/RecNesBloG" class="btn-social btn-outline"><i class="fa fa-fw fa-facebook"></i></a>
+                            </li>
+{#                            <li>#}
+{#                                <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-google-plus"></i></a>#}
+{#                            </li>#}
+{#                            <li>#}
+{#                                <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-twitter"></i></a>#}
+{#                            </li>#}
+{#                            <li>#}
+{#                                <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-linkedin"></i></a>#}
+{#                            </li>#}
+{#                            <li>#}
+{#                                <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-dribbble"></i></a>#}
+{#                            </li>#}
+                        </ul>
+                    </div>
+                    <div class="footer-col col-md-4">
+                        <h3>About Developer</h3>
+                        <p>Random Brid Name Generator for anonymity created by <a href="http://recnes.com">Sencer Hamarat</a>.</p>
+                        <p><a href="https://vimeo.com/14194438" target="_blank"><i class="fa fa-bug"></i> The Beatles - Free As A Bird</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-below">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        Copyright &copy; Random Bird Name Generator by Sencer Hamarat 2015
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
+    <div class="scroll-top page-scroll visible-xs visble-sm">
+        <a class="btn btn-primary" href="#page-top">
+            <i class="fa fa-chevron-up"></i>
+        </a>
+    </div>
+
+
+    <!-- jQuery -->
+    <script src="{{ STATIC_URL }}js/jquery.js"></script>
+    <script src="{{ STATIC_URL }}js/jquery.cookie.js"></script>
+
+    <!-- ZeroClipboard -->
+    <script src="{{ STATIC_URL }}js/ZeroClipboard.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="{{ STATIC_URL }}js/bootstrap.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="{{ STATIC_URL }}js/rbng.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+    <script src="{{ STATIC_URL }}js/classie.js"></script>
+    <script src="{{ STATIC_URL }}js/cbpAnimatedHeader.js"></script>
+
+    <!-- Contact Form JavaScript -->
+    <script src="{{ STATIC_URL }}js/jqBootstrapValidation.js"></script>
+    <script src="{{ STATIC_URL }}js/contact_me.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="{{ STATIC_URL }}js/freelancer.js"></script>
+
+    <!-- Clipboard JavaScript -->
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-61475119-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+</body>
+
+</html>
