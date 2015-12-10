@@ -51,5 +51,5 @@ def start_page(request, title="Random Bird Name Generator"):
     """
         Site ana sayfası.
     """
-    content = {'title': title}
+    content = {'title': title, 'count': GeneralStatistics.objects.count()}
     return render_to_response('index.html', content, context_instance=RequestContext(request, {}))
