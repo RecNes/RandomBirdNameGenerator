@@ -3,6 +3,5 @@ dj-static==0.0.6
 Django==1.9
 Django-Accounts==0.1
 django-toolbelt==0.0.1
-gunicorn==19.4.1
 Markdown==2.6.5
 psycopg2==2.6.1
