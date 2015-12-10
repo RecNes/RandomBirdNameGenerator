@@ -136,7 +136,6 @@ target/
 
 logs/
 
-*.sqlite3
 /keep_secure
 
 
