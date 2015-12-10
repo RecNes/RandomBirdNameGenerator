@@ -23,7 +23,7 @@ class BirdNameDatabase(models.Model):
 
 class GeneralStatistics(models.Model):
     bird_name = models.ForeignKey(BirdNameDatabase)
-    client_ip = models.IPAddressField(verbose_name=u"Client IP")
+    client_ip = models.GenericIPAddressField(verbose_name=u"Client IP")
     created = models.DateTimeField(verbose_name=u"Request Date", auto_now_add=True)
 
     def __unicode__(self):
