@@ -127,7 +127,6 @@ coverage.xml
 
 # Django stuff:
 *.log
-*.txt
 
 # Sphinx documentation
 docs/_build/
@@ -138,4 +137,6 @@ target/
 logs/
 
 *.sqlite3
+/keep_secure
+
 
