@@ -1,12 +1,11 @@
 # coding: utf-8
 from random import randint
+
 from django import forms
-from django.core import serializers
-from django.template.context_processors import request
 from django.http import HttpResponse
-from django.shortcuts import render_to_response
-from django.template.context import RequestContext
+from django.shortcuts import render
 from django.views.decorators.csrf import csrf_protect
+
 from rbnapi.models import BirdNameDatabase, GeneralStatistics
 from rbnapi.rb_logger import log
 
@@ -52,4 +51,4 @@ def start_page(request, title="Random Bird Name Generator"):
         Site ana sayfası.
     """
     content = {'title': title, 'count': GeneralStatistics.objects.count()}
-    return render_to_response('index.html', content, context_instance=RequestContext(request, {}))
+    return render(request, 'index.html', content)
