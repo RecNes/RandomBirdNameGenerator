@@ -1,7 +1,7 @@
 # coding: utf-8
 import re
 import string
-import urllib
+from urllib.request import Request, urlopen
 from rbnapi.models import BirdNameDatabase, ScientificName
 from rbnapi.rb_logger import log
 
@@ -29,8 +29,8 @@ class ExtractValuesFromRemotePage(object):
 
     def make_connection(self):
         self.the_page = None
-        req = urllib.Request(self.url)
-        response = urllib.urlopen(req)
+        req = Request(self.url)
+        response = urlopen(req)
         self.the_page = response.read()
         with open("temp/{}_html.txt".format(self.file_name), "w+") as wp:
             wp.writelines(self.the_page)
