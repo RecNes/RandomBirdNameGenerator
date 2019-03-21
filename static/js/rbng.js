@@ -17,9 +17,9 @@ function getCookie(name) {
     }
     return cookieValue;
 }
-var csrftoken = getCookie('csrftoken');
 
 $('#bird_name_form').submit(function(){
+    var csrftoken = getCookie('csrftoken');
     console.log(csrftoken);
     var sc = $('#get_scientific').prop('checked');
     var cn = $('#counter');
