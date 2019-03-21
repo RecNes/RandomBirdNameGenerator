@@ -9,22 +9,54 @@ $('#bird_name_form').submit(function(){
     var bn = $('#bird_name');
     var sn = $('#scientific_name');
     var sbn = $('#show_bird_name');
-    $.post('/bird_name_requested/', {'sci_check': sc, 'csrfmiddlewaretoken': csrftoken}, function(data){
-        sbn.fadeOut(function() {
-            $('.check').hide();  // hide "copied to clipboard" message
-            sn.html('').hide();  // If checkbox unchecked clean object html and hide object
-            var splited_data = data.split(",");
-            bn.html(splited_data[0]);
-            if (sc){
-                sn.html(splited_data[1]).show();
-                cn.html(splited_data[2]);
-            } else {
-                cn.html(splited_data[1]);
-            }
-            $('#copy-button').attr("data-clipboard-text", data).show();
-        });
-        sbn.fadeIn();
+
+
+
+    $.ajax({
+        url: '/bird_name_requested/',
+        type: 'post',
+        data: {
+            'sci_check': sc
+        },
+        headers: {
+            "X-CSRFToken": csrftoken,   //If your header name has spaces or any other char not appropriate
+        },
+        dataType: 'json',
+        success: function (data) {
+            console.info(data);
+            sbn.fadeOut(function() {
+                $('.check').hide();  // hide "copied to clipboard" message
+                sn.html('').hide();  // If checkbox unchecked clean object html and hide object
+                var splited_data = data.split(",");
+                bn.html(splited_data[0]);
+                if (sc){
+                    sn.html(splited_data[1]).show();
+                    cn.html(splited_data[2]);
+                } else {
+                    cn.html(splited_data[1]);
+                }
+                $('#copy-button').attr("data-clipboard-text", data).show();
+            });
+            sbn.fadeIn();
+        }
     });
+
+    // $.post('/bird_name_requested/', {'sci_check': sc, 'csrfmiddlewaretoken': csrftoken}, function(data){
+    //     sbn.fadeOut(function() {
+    //         $('.check').hide();  // hide "copied to clipboard" message
+    //         sn.html('').hide();  // If checkbox unchecked clean object html and hide object
+    //         var splited_data = data.split(",");
+    //         bn.html(splited_data[0]);
+    //         if (sc){
+    //             sn.html(splited_data[1]).show();
+    //             cn.html(splited_data[2]);
+    //         } else {
+    //             cn.html(splited_data[1]);
+    //         }
+    //         $('#copy-button').attr("data-clipboard-text", data).show();
+    //     });
+    //     sbn.fadeIn();
+    // });
 });
 
 var client = new ZeroClipboard( document.getElementById("copy-button") );
