@@ -2,9 +2,9 @@
  * Created by Sencer Hamarat on 28.03.2015.
  */
 
-var csrftoken = $.cookie('csrftoken');
 
 $('#bird_name_form').submit(function(){
+    var csrftoken = $.cookie('csrftoken');
     var sc = $('#get_scientific').prop('checked');
     var cn = $('#counter');
     var bn = $('#bird_name');
