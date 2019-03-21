@@ -2,6 +2,23 @@
  * Created by Sencer Hamarat on 28.03.2015.
  */
 
+var getUrlParameter = function getUrlParameter(sParam) {
+    var sPageURL = window.location.search.substring(1),
+        sURLVariables = sPageURL.split('&'),
+        sParameterName,
+        i;
+
+    for (i = 0; i < sURLVariables.length; i++) {
+        sParameterName = sURLVariables[i].split('=');
+
+        if (sParameterName[0] === sParam) {
+            return sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
+        }
+    }
+};
+
+
+
 function csrfSafeMethod(method) {
     // these HTTP methods do not require CSRF protection
     return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
@@ -9,7 +26,8 @@ function csrfSafeMethod(method) {
 
 
 $('#bird_name_form').submit(function(){
-    var csrftoken = $("input[name=csrfmiddlewaretoken]").val();
+    // var csrftoken = getUrlParameter('csrfmiddlewaretoken');
+    // var csrftoken = $("input[name=csrfmiddlewaretoken]").val();
     var sc = $('#get_scientific').prop('checked');
     var cn = $('#counter');
     var bn = $('#bird_name');
