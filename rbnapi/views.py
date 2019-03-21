@@ -40,7 +40,7 @@ def bird_name_requested(request):
         if form.is_valid():
             sci_check = form.cleaned_data['sci_check']
             bn = generate_bird_name(request)
-
+            print("------------")
             print(bn)
             if sci_check:
                 return HttpResponse("{},{},{}".format(bn[0].title(), bn[1].title(), bn[2]))
