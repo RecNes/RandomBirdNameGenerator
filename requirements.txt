@@ -1,6 +1,6 @@
 dj-database-url==0.5.0
 dj-static==0.0.6
-Django==2.1.7
+Django==2.0.13
 Django-Accounts==0.1
 django-crispy-forms==1.7.2
 django-toolbelt==0.0.1
