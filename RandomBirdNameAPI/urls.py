@@ -14,8 +14,4 @@ urlpatterns = [
 
     path('bird_name_requested/', bird_name_requested, name='bird_name_requested'),
     path('', start_page, name='index'),  # HTML Index page
-
-    # Wire up our API using automatic URL routing.
-    # Additionally, we include login URLs for the browsable API.
-
 ]
