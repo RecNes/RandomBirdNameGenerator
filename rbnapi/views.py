@@ -36,6 +36,9 @@ class RBNForm(forms.Form):
 @csrf_protect
 # @csrf_exempt
 def bird_name_requested(request):
+    if request.session.test_cookie_worked():
+        print(">>>> TEST COOKIE WORKED!")
+        request.session.delete_test_cookie()
     print(request.method)
     print(request.POST)
     if request.method == 'POST':
@@ -55,5 +58,8 @@ def start_page(request, title="Random Bird Name Generator"):
     """
         Site ana sayfası.
     """
+    request.session.set_test_cookie()
+
+
     content = {'title': title, 'count': GeneralStatistics.objects.count()}
     return render(request, 'index.html', content)
