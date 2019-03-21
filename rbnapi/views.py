@@ -36,18 +36,11 @@ class RBNForm(forms.Form):
 @csrf_protect
 # @csrf_exempt
 def bird_name_requested(request):
-    if request.session.test_cookie_worked():
-        print(">>>> TEST COOKIE WORKED!")
-        request.session.delete_test_cookie()
-    print(request.method)
-    print(request.POST)
     if request.method == 'POST':
         form = RBNForm(request.POST)
         if form.is_valid():
             sci_check = form.cleaned_data['sci_check']
             bn = generate_bird_name(request)
-            print("------------")
-            print(bn)
             if sci_check:
                 return HttpResponse("{},{},{}".format(bn[0].title(), bn[1].title(), bn[2]))
             else:
@@ -55,13 +48,6 @@ def bird_name_requested(request):
 
 
 def start_page(request, title="Random Bird Name Generator"):
-    """
-        Site ana sayfası.
-    """
-    try:
-        request.session.set_test_cookie()
-    except Exception as uee:
-        print(uee)
-
+    """Site ana sayfası."""
     content = {'title': title, 'count': GeneralStatistics.objects.count()}
     return render(request, 'index.html', content)
