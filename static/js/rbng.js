@@ -2,14 +2,7 @@
  * Created by Sencer Hamarat on 28.03.2015.
  */
 
-
-var csrftoken;
-
-
-$( document ).ready(function() {
-    csrftoken = $.cookie('csrftoken');
-});
-
+var csrftoken = $.cookie('csrftoken');
 
 $('#bird_name_form').submit(function(){
     var sc = $('#get_scientific').prop('checked');
