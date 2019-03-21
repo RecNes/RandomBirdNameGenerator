@@ -33,8 +33,8 @@ class RBNForm(forms.Form):
     sci_check = forms.BooleanField(required=False, label="Scientific Name", initial=False)
 
 
-# @csrf_protect
-@csrf_exempt
+@csrf_protect
+# @csrf_exempt
 def bird_name_requested(request):
     print(request.method)
     print(request.POST)
