@@ -4,7 +4,7 @@ from random import randint
 from django import forms
 from django.http import HttpResponse
 from django.shortcuts import render
-from django.views.decorators.csrf import csrf_protect
+from django.views.decorators.csrf import csrf_protect, csrf_exempt
 
 from rbnapi.models import BirdNameDatabase, GeneralStatistics
 from rbnapi.rb_logger import log
@@ -33,7 +33,8 @@ class RBNForm(forms.Form):
     sci_check = forms.BooleanField(required=False, label="Scientific Name", initial=False)
 
 
-@csrf_protect
+# @csrf_protect
+@csrf_exempt
 def bird_name_requested(request):
     print(request.method)
     if request.method == 'POST':
