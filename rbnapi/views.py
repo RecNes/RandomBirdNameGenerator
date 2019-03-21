@@ -58,8 +58,10 @@ def start_page(request, title="Random Bird Name Generator"):
     """
         Site ana sayfası.
     """
-    request.session.set_test_cookie()
-
+    try:
+        request.session.set_test_cookie()
+    except Exception as uee:
+        print(uee)
 
     content = {'title': title, 'count': GeneralStatistics.objects.count()}
     return render(request, 'index.html', content)
