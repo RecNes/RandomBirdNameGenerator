@@ -5,6 +5,7 @@
 var csrftoken = $.cookie('csrftoken');
 
 $('#bird_name_form').submit(function(){
+    console.log(csrftoken);
     var sc = $('#get_scientific').prop('checked');
     var cn = $('#counter');
     var bn = $('#bird_name');
