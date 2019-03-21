@@ -142,3 +142,9 @@ logs/
 migrations/
 
 db.sqlite3
+*.pyc
+
+logs/
+*.log
+
+activate
