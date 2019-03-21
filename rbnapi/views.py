@@ -35,6 +35,7 @@ class RBNForm(forms.Form):
 
 @csrf_protect
 def bird_name_requested(request):
+    print(request.method)
     if request.method == 'POST':
         form = RBNForm(request.POST)
         if form.is_valid():
