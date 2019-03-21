@@ -19,7 +19,8 @@ $('#bird_name_form').submit(function(){
             'sci_check': sc
         },
         headers: {
-            "X-CSRFToken": csrftoken,   //If your header name has spaces or any other char not appropriate
+            "X-CSRFToken": csrftoken,
+            "HTTP_X_CSRFTOKEN": csrftoken,
         },
         dataType: 'json',
         success: function (data) {
