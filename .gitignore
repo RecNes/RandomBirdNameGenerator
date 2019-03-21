@@ -140,3 +140,5 @@ logs/
 
 migrations/
 
+db.sqlite3
+
