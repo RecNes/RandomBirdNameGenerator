@@ -26,7 +26,7 @@ function csrfSafeMethod(method) {
 
 
 $('#bird_name_form').submit(function(){
-    // var csrftoken = getUrlParameter('csrfmiddlewaretoken');
+    var csrftoken = getUrlParameter('csrfmiddlewaretoken');
     // var csrftoken = $("input[name=csrfmiddlewaretoken]").val();
     var sc = $('#get_scientific').prop('checked');
     var cn = $('#counter');
