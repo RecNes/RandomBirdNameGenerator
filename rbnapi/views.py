@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+# coding: utf-8
 from random import randint
 from django import forms
 from django.core import serializers

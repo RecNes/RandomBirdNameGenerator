@@ -1,7 +1,7 @@
-# -*- coding: utf-8 -*-
+# coding: utf-8
 import re
 import string
-import urllib2
+import urllib
 from rbnapi.models import BirdNameDatabase, ScientificName
 from rbnapi.rb_logger import log
 
@@ -29,8 +29,8 @@ class ExtractValuesFromRemotePage(object):
 
     def make_connection(self):
         self.the_page = None
-        req = urllib2.Request(self.url)
-        response = urllib2.urlopen(req)
+        req = urllib.Request(self.url)
+        response = urllib.urlopen(req)
         self.the_page = response.read()
         with open("temp/{}_html.txt".format(self.file_name), "w+") as wp:
             wp.writelines(self.the_page)
@@ -52,7 +52,7 @@ class ExtractValuesFromRemotePage(object):
                 self.bird_names=duplicate_items
                 self.write_into_file()
             except Exception as e:
-                print e
+                print(e)
                 log.exception(e)
                 pass
 
@@ -117,7 +117,7 @@ class SibleyAndMonroe(WikiTurkiye):
         for line in fl:
             self.the_page = line
             sline = line.lower().replace("\n", "").split("|")
-            print repr(sline)
+            print(repr(sline))
             self.bird_names.append((sline[0], sline[1]))
         self.save_to_database()
 
@@ -141,7 +141,7 @@ class AllaboutbirdsOrg(ExtractValuesFromRemotePage):
                 db = BirdNameDatabase(bird_name=bird_name, scientific_name=db_sc)
                 db.save()
             except Exception as e:
-                print e
+                print(e)
                 log.exception(e)
                 pass
 

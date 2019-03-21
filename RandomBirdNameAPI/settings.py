@@ -1,4 +1,4 @@
-# -*- codign: utf-8 -*-
+# coding: utf-8
 """
 Django settings for RandomBirdNameAPI project.
 
@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/1.7/ref/settings/
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 from django.utils.translation import ugettext_lazy as _
+
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 # ABS_PATH = os.path.abspath(BASE_DIR)
 
@@ -42,7 +43,7 @@ DEFAULT_FROM_EMAIL = 'Random Bird name Generator <info@randombirdnamegenerator.c
 SERVER_EMAIL = 'server@randombirdnamegenerator.com'
 EMAIL_SUBJECT_PREFIX = '[ RBNG ]'
 
-#ALLOWED_HOSTS = ['randombirdnamegenerator.herokuapp.com']
+# ALLOWED_HOSTS = ['randombirdnamegenerator.herokuapp.com']
 
 
 # Application definition
@@ -74,7 +75,6 @@ MIDDLEWARE_CLASSES = (
 ROOT_URLCONF = 'RandomBirdNameAPI.urls'
 
 WSGI_APPLICATION = 'RandomBirdNameAPI.wsgi.application'
-
 
 # Database
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
@@ -109,7 +109,6 @@ USE_L10N = True
 LANGUAGES = (
     ('en', _('English')),
 )
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
