@@ -39,7 +39,9 @@ $('#bird_name_form').submit(function () {
 function fallbackCopyTextToClipboard(text) {
     var textArea = document.createElement("textarea");
     textArea.value = text;
-    document.body.appendChild(textArea);
+    console.log(this);
+    $(this).appendChild(textArea);
+    // document.body.appendChild(textArea);
     textArea.focus();
     textArea.select();
 
