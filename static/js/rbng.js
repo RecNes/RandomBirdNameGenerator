@@ -55,7 +55,7 @@ function fallbackCopyTextToClipboard(text) {
         console.error('Fallback: Oops, unable to copy', err);
     }
 
-    sbn.remove($('#copyfield'));
+    // sbn.remove($('#copyfield'));
 }
 
 function copyTextToClipboard(text) {
