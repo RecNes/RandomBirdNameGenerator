@@ -37,9 +37,11 @@ $('#bird_name_form').submit(function () {
 });
 
 function fallbackCopyTextToClipboard(text) {
+    var sbn = $("#show_bird_name");
     var textArea = document.createElement("textarea");
+    textArea.style.visibility = "hidden";
     textArea.value = text;
-    $("#show_bird_name").append(textArea);
+    sbn.append(textArea);
     // document.body.appendChild(textArea);
     textArea.focus();
     textArea.select();
@@ -52,7 +54,7 @@ function fallbackCopyTextToClipboard(text) {
         console.error('Fallback: Oops, unable to copy', err);
     }
 
-    document.body.removeChild(textArea);
+    sbn.removeChild(textArea);
 }
 
 function copyTextToClipboard(text) {
