@@ -40,6 +40,7 @@ function fallbackCopyTextToClipboard(text) {
     var sbn = $("#show_bird_name");
     var textArea = document.createElement("textarea");
     textArea.style.visibility = "hidden";
+    textArea.id = "copyfield";
     textArea.value = text;
     sbn.append(textArea);
     // document.body.appendChild(textArea);
@@ -54,7 +55,7 @@ function fallbackCopyTextToClipboard(text) {
         console.error('Fallback: Oops, unable to copy', err);
     }
 
-    sbn.remove(textArea);
+    sbn.remove($('#copyfield'));
 }
 
 function copyTextToClipboard(text) {
