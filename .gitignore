@@ -148,3 +148,5 @@ logs/
 *.log
 
 activate
+
+static_files/
