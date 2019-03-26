@@ -37,7 +37,7 @@ $('#bird_name_form').submit(function () {
 });
 
 function fallbackCopyTextToClipboard(text) {
-    var sbn = $("#show_bird_name");
+    var sbn = document.getElementById("show_bird_name");
     var textArea = document.createElement("textarea");
     textArea.style.visibility = "hidden";
     textArea.id = "copyfield";
