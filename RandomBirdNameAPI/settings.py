@@ -13,6 +13,8 @@ https://docs.djangoproject.com/en/1.7/ref/settings/
 import os
 from django.utils.translation import ugettext_lazy as _
 
+from .loggin import LOGGING
+
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 # ABS_PATH = os.path.abspath(BASE_DIR)
 
@@ -24,7 +26,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 SECRET_KEY = "-iq0a4$ml&u)p1z_jx$i5y!5nzx(mejk3ho%48*ub+8+4m#@0v"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 DEBUG_PROPAGATE_EXCEPTIONS = DEBUG
 
 ADMINS = (
@@ -43,7 +45,7 @@ DEFAULT_FROM_EMAIL = 'Random Bird name Generator <info@rbgn.recnes.com>'
 SERVER_EMAIL = 'server@rbgn.recnes.com'
 EMAIL_SUBJECT_PREFIX = '[ RBNG ]'
 
-ALLOWED_HOSTS = ['vpnhmrt.duckdns.org', ]
+ALLOWED_HOSTS = ['vpnhmrt.duckdns.org',  '127.0.0.1']
 
 
 # Application definition
