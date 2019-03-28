@@ -3,14 +3,14 @@
  */
 
 $('#bird_name_form').submit(function () {
-    var csrftoken = $.cookie('csrftoken');
-    var sc = $('#get_scientific').prop('checked');
-    var cn = $('#counter');
-    var bn_div = $('#bn_div');
-    var bn = $('#bird_name');
-    var sn_div = $('#sn_div');
-    var sn = $('#scientific_name');
-    var sbn = $('#show_bird_name');
+    let csrftoken = $.cookie('csrftoken');
+    let sc = $('#get_scientific').prop('checked');
+    let cn = $('#counter');
+    let bn_div = $('#bn_div');
+    let bn = $('#bird_name');
+    let sn_div = $('#sn_div');
+    let sn = $('#scientific_name');
+    let sbn = $('#show_bird_name');
     $.post('/bird_name_requested/', {'sci_check': sc, 'csrfmiddlewaretoken': csrftoken}, function (data) {
         sbn.fadeOut(function () {
             $('.check').hide();  // hide "copied to clipboard" message
@@ -19,7 +19,7 @@ $('#bird_name_form').submit(function () {
             sn_div.hide();  // If checkbox unchecked clean object html and hide object
             sn.html('');
 
-            var splited_data = data.split(",");
+            let splited_data = data.split(",");
 
             bn.html(splited_data[0]);
             bn_div.show();
@@ -36,41 +36,26 @@ $('#bird_name_form').submit(function () {
     });
 });
 
-function fallbackCopyTextToClipboard(text) {
-    var sbn = document.getElementById("show_bird_name");
-    var textArea = document.createElement("textarea");
-    textArea.style.visibility = "hidden";
-    textArea.id = "copyfield";
-    textArea.value = text;
-    sbn.append(textArea);
-    // document.body.appendChild(textArea);
-    textArea.focus();
-    textArea.select();
 
-    try {
-        var successful = document.execCommand('copy');
-        var msg = successful ? 'successful' : 'unsuccessful';
-        // console.log('Fallback: Copying text command was ' + msg);
-    } catch (err) {
-        console.error('Fallback: Oops, unable to copy', err);
+const copyTextToClipboard = str => {
+    const cbel = document.createElement('textarea');    // Create a textarea element
+    cbel.style.position = 'absolute';
+    cbel.style.left = '-9999px';                        // Move outside of the screen to make invisible
+    cbel.value = str;                                   // Set its value to that you want copied
+    cbel.setAttribute('readonly', '');                  // Making it readonly to be anti-tamper
+    document.body.appendChild(cbel);                    // Append the <textarea> element to the HTML document
+    const selected =
+        document.getSelection().rangeCount > 0          // Check if there is any content selected previously
+            ? document.getSelection().getRangeAt(0)     // Store selection if found
+            : false;                                    // Mark as false to know no selection existed before
+    cbel.select();                                      // Select the <textarea> content
+    document.execCommand('copy');                       // Copy - only works as a result of a user action (e.g. click events)
+    let copied = $('.check');
+    copied.show();
+    copied.delay(750).fadeOut();
+    document.body.removeChild(cbel);                    // Remove the textarea element
+    if (selected) {                                     // If a selection existed before copying
+        document.getSelection().removeAllRanges();      // Unselect everything on the HTML document
+        document.getSelection().addRange(selected);     // Restore the original selection
     }
-
-    // sbn.remove($('#copyfield'));
-}
-
-function copyTextToClipboard(text) {
-    // console.log(text);
-    if (!navigator.clipboard) {
-        fallbackCopyTextToClipboard(text);
-        return;
-    }
-    navigator.clipboard.writeText(text).then(function () {
-        // console.log('Async: Copying to clipboard was successful!');
-        var copied = $('.check');
-        copied.show();
-        copied.delay(750).fadeOut();
-
-    }, function (err) {
-        console.error('Async: Could not copy text: ', err);
-    });
-}
+};
