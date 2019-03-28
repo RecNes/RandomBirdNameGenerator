@@ -1,11 +1,13 @@
 # coding: utf-8
+import logging
 import re
 import string
 from urllib.request import Request, urlopen
 from rbnapi.models import BirdNameDatabase, ScientificName
-from rbnapi.rb_logger import log
 
 __author__ = 'Sencer Hamarat'
+
+log = logging.getLogger(__name__)
 
 
 class ExtractValuesFromRemotePage(object):
@@ -49,7 +51,7 @@ class ExtractValuesFromRemotePage(object):
                     db.save()
                 else:
                     duplicate_items.append(item)
-                self.bird_names=duplicate_items
+                self.bird_names = duplicate_items
                 self.write_into_file()
             except Exception as e:
                 print(e)
