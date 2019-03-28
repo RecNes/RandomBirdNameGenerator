@@ -14,7 +14,7 @@ import os
 
 from django.utils.translation import ugettext_lazy as _
 
-from .loggin import LOGGING, BASE_DIR
+from .logging_settings import LOGGING, BASE_DIR
 
 LOGGING = LOGGING
 # ABS_PATH = os.path.abspath(BASE_DIR)
