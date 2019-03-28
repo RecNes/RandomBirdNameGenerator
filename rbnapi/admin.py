@@ -21,6 +21,5 @@ class ScientificNameAdmin(admin.ModelAdmin):
 
 @register(GeneralStatistics)
 class GeneralStatisticsAdmin(admin.ModelAdmin):
-    list_display = ['created', 'client_ip', 'bird_name']
-    ordering = ['created']
-    search_fields = ['client_ip']
+    list_display = ['updated', 'bird_name']
+    ordering = ['updated']
