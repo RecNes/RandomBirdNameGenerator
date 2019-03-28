@@ -3,19 +3,23 @@ from rest_framework import serializers
 from .models import BirdNameDatabase, ScientificName, GeneralStatistics
 
 
-class BirdNameSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = BirdNameDatabase
-        fields = '__all__'
-
-
 class ScientificNameSerializer(serializers.ModelSerializer):
     class Meta:
         model = ScientificName
-        fields = '__all__'
+        fields = ['scientific_name', ]
+
+
+class BirdNameSerializer(serializers.ModelSerializer):
+
+    _scientific_name = ScientificNameSerializer(read_only=True, many=True)
+
+    class Meta:
+        model = BirdNameDatabase
+        depth = 1
+        fields = ['bird_name', '_scientific_name']
 
 
 class GeneralStatisticsSerializer(serializers.ModelSerializer):
     class Meta:
         model = GeneralStatistics
-        fields = '__all__'
+        fields = ['bird_name', 'client_ip']
