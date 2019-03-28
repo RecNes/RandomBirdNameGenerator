@@ -3,7 +3,9 @@ Django logging settings
 """
 import os
 
-log_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'logs/')
+BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+
+log_path = os.path.join(BASE_DIR, 'logs/')
 
 LOGGING = {
     'version': 1,

@@ -11,11 +11,12 @@ https://docs.djangoproject.com/en/1.7/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+
 from django.utils.translation import ugettext_lazy as _
 
-from .loggin import LOGGING
+from .loggin import LOGGING, BASE_DIR
 
-BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+LOGGING = LOGGING
 # ABS_PATH = os.path.abspath(BASE_DIR)
 
 
@@ -45,8 +46,7 @@ DEFAULT_FROM_EMAIL = 'Random Bird name Generator <info@rbgn.recnes.com>'
 SERVER_EMAIL = 'server@rbgn.recnes.com'
 EMAIL_SUBJECT_PREFIX = '[ RBNG ]'
 
-ALLOWED_HOSTS = ['vpnhmrt.duckdns.org',  '127.0.0.1']
-
+ALLOWED_HOSTS = ['vpnhmrt.duckdns.org', '127.0.0.1']
 
 # Application definition
 
@@ -88,7 +88,6 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
-
 
 AUTH_PASSWORD_VALIDATORS = [
     {
