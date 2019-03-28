@@ -11,6 +11,7 @@ from .serializers import BirdNameSerializer
 
 log = logging.getLogger(__name__)
 
+
 class GetBirdName(APIView):
 
     def save_general_statistics(self, request, bn):
@@ -30,23 +31,6 @@ class GetBirdName(APIView):
         count = self.save_general_statistics(request, bn)
         log.info("{} / {}".format(bn.bird_name, bn.scientific_name.scientific_name))
         return Response(serialized.data)
-
-
-# class RBNForm(forms.Form):
-#     sci_check = forms.BooleanField(required=False, label="Scientific Name", initial=False)
-
-
-# @csrf_protect
-# def bird_name_requested(request):
-#     if request.method == 'POST':
-#         form = RBNForm(request.POST)
-#         if form.is_valid():
-#             sci_check = form.cleaned_data['sci_check']
-#             bn = generate_bird_name(request)
-#             if sci_check:
-#                 return HttpResponse("{},{},{}".format(bn[0].title(), bn[1].title(), bn[2]))
-#             else:
-#                 return HttpResponse("{},{}".format(bn[0].title(), bn[2]))
 
 
 def start_page(request, title="Random Bird Name Generator"):
