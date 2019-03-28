@@ -43,7 +43,7 @@ DEFAULT_FROM_EMAIL = 'Random Bird name Generator <info@rbgn.recnes.com>'
 SERVER_EMAIL = 'server@rbgn.recnes.com'
 EMAIL_SUBJECT_PREFIX = '[ RBNG ]'
 
-ALLOWED_HOSTS = ['*', ]
+ALLOWED_HOSTS = ['vpnhmrt.duckdns.org', ]
 
 
 # Application definition
