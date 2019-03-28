@@ -4,6 +4,8 @@ Django==2.0.13
 Django-Accounts==0.1
 django-crispy-forms==1.7.2
 django-toolbelt==0.0.1
+djangorestframework==3.9.2
+djangorestframework-stubs==0.4.2
 gunicorn==19.9.0
 Markdown==3.0.1
 psycopg2==2.7.7
