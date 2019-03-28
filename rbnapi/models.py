@@ -10,7 +10,7 @@ class ScientificName(models.Model):
 
 
 class BirdNameDatabase(models.Model):
-    scientific_name = models.ForeignKey(ScientificName, on_delete=models.CASCADE)
+    scientific_name = models.ForeignKey(ScientificName, related_name='bird_name', on_delete=models.CASCADE)
     bird_name = models.TextField(verbose_name=u"Bird Name", unique=True)
 
     def __unicode__(self):
@@ -21,7 +21,7 @@ class BirdNameDatabase(models.Model):
 
 
 class GeneralStatistics(models.Model):
-    bird_name = models.ForeignKey(BirdNameDatabase, on_delete=models.CASCADE)
+    bird_name = models.ForeignKey(BirdNameDatabase, related_name='statistic', on_delete=models.CASCADE)
     client_ip = models.GenericIPAddressField(verbose_name=u"Client IP")
     created = models.DateTimeField(verbose_name=u"Request Date", auto_now_add=True)
 
