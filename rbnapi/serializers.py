@@ -11,12 +11,12 @@ class ScientificNameSerializer(serializers.ModelSerializer):
 
 class BirdNameSerializer(serializers.ModelSerializer):
 
-    _scientific_name = ScientificNameSerializer(read_only=True, many=True)
+    scientific_name = ScientificNameSerializer(many=False)
 
     class Meta:
         model = BirdNameDatabase
         depth = 1
-        fields = ['bird_name', '_scientific_name']
+        fields = ['bird_name', 'scientific_name']
 
 
 class GeneralStatisticsSerializer(serializers.ModelSerializer):
