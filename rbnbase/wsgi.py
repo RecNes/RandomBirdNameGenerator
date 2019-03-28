@@ -1,5 +1,5 @@
 """
-WSGI config for RandomBirdNameAPI project.
+WSGI config for rbnbase project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
@@ -8,8 +8,8 @@ https://docs.djangoproject.com/en/1.7/howto/deployment/wsgi/
 """
 import os
 
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "RandomBirdNameAPI.settings")
-# os.environ["DJANGO_SETTINGS_MODULE"] = "RandomBirdNameAPI.settings"
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "rbnbase.settings")
+# os.environ["DJANGO_SETTINGS_MODULE"] = "rbnbase.settings"
 
 from django.core.wsgi import get_wsgi_application
 from dj_static import Cling

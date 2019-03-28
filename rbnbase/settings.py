@@ -1,6 +1,6 @@
 # coding: utf-8
 """
-Django settings for RandomBirdNameAPI project.
+Django settings for rbnbase project.
 
 For more information on this file, see
 https://docs.djangoproject.com/en/1.7/topics/settings/
@@ -75,9 +75,9 @@ MIDDLEWARE = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
-ROOT_URLCONF = 'RandomBirdNameAPI.urls'
+ROOT_URLCONF = 'rbnbase.urls'
 
-WSGI_APPLICATION = 'RandomBirdNameAPI.wsgi.application'
+WSGI_APPLICATION = 'rbnbase.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases

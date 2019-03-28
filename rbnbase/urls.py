@@ -8,7 +8,7 @@ from rbnapi import views
 # Additionally, we include login URLs for the browsable API.
 urlpatterns = [
     # Examples:
-    # path('', 'RandomBirdNameAPI.views.home', name='home'),
+    # path('', 'rbnbase.views.home', name='home'),
     # path('blog/', include('blog.paths')),
 
     path('admin/', admin.site.urls),
