@@ -3,7 +3,6 @@
  */
 
 $('#get_bird_name').click(function () {
-    let csrftoken = $.cookie('csrftoken');
     let sc = $('#get_scientific').prop('checked');
     let cn = $('#counter');
     let bn_div = $('#bn_div');
@@ -13,34 +12,34 @@ $('#get_bird_name').click(function () {
     let sbn = $('#show_bird_name');
 
     // $.get('/bnapi/', {'format': 'json'},
-    $.ajax({
-        url: "/bnapi/",
-        dataType: "JSON",
-        type: "GET",
-        success: function (data) { // 'csrfmiddlewaretoken': csrftoken
-            console.log(data);
-            sbn.fadeOut(function () {
-                $('.check').hide();  // hide "copied to clipboard" message
-                bn_div.hide();  // If checkbox unchecked clean object html and hide object
-                bn.html('');
-                sn_div.hide();  // If checkbox unchecked clean object html and hide object
-                sn.html('');
+    $.getJSON("/bnapi/", {'format': 'json'}, function (data) { // 'csrfmiddlewaretoken': csrftoken
+        console.log(data);
+        sbn.fadeOut(function () {
+            $('.check').hide();  // hide "copied to clipboard" message
+            bn_div.hide();  // If checkbox unchecked clean object html and hide object
+            bn.html('');
+            sn_div.hide();  // If checkbox unchecked clean object html and hide object
+            sn.html('');
 
-                let splited_data = data.split(",");
+            $.each(data, function (key, val) {
 
-                bn.html(splited_data[0]);
-                bn_div.show();
-                if (sc) {
-                    sn.html(splited_data[1]);
-                    sn_div.show();
-                    cn.html(splited_data[2]);
-                } else {
-                    cn.html(splited_data[1]);
+                if (key === "bird_name") {
+                    bn.html(val);
+                    bn_div.show();
                 }
-                $('#copy-button').show();
+
+                if (key === "scientific_name") {
+                    $.each(val, function (subkey, subval) {
+                        if (sc && subkey === "scientific_name") {
+                            sn.html(subval);
+                            sn_div.show();
+                        }
+                    });
+                }
             });
             sbn.fadeIn();
-    }});
+        });
+    });
 });
 
 
