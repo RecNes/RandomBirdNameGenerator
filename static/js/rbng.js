@@ -11,7 +11,8 @@ $('#bird_name_form').submit(function () {
     let sn_div = $('#sn_div');
     let sn = $('#scientific_name');
     let sbn = $('#show_bird_name');
-    $.post('/bird_name_requested/', {'sci_check': sc, 'csrfmiddlewaretoken': csrftoken}, function (data) {
+    $.get('/bnapi/', {'format': 'json'}, function (data) { // 'csrfmiddlewaretoken': csrftoken
+        console.log(data);
         sbn.fadeOut(function () {
             $('.check').hide();  // hide "copied to clipboard" message
             bn_div.hide();  // If checkbox unchecked clean object html and hide object
