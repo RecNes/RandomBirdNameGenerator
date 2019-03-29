@@ -14,10 +14,9 @@ $('#bird_name_form').submit(function () {
 
     // $.get('/bnapi/', {'format': 'json'},
     $.ajax({
-        url: "/bnapi/?format=json",
+        url: "/bnapi/",
         dataType: "JSON",
         type: "GET",
-        fail: alert("Error on request"),
         success: function (data) { // 'csrfmiddlewaretoken': csrftoken
             console.log(data);
             sbn.fadeOut(function () {
