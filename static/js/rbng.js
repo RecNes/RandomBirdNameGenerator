@@ -13,7 +13,7 @@ $('#bird_name_form').submit(function () {
     let sbn = $('#show_bird_name');
 
     // $.get('/bnapi/', {'format': 'json'},
-    $.ajax({url: "/bnapi/?format:json"}).then(
+    $.ajax({url: "/bnapi/?format=json"}).then(
         function (data) { // 'csrfmiddlewaretoken': csrftoken
             console.log(data);
             sbn.fadeOut(function () {
