@@ -13,8 +13,11 @@ $('#bird_name_form').submit(function () {
     let sbn = $('#show_bird_name');
 
     // $.get('/bnapi/', {'format': 'json'},
-    $.ajax({url: "/bnapi/?format=json"}).then(
-        function (data) { // 'csrfmiddlewaretoken': csrftoken
+    $.ajax({
+        url: "/bnapi/?format=json",
+        dataType: "JSON",
+        type: "GET",
+        success: function (data) { // 'csrfmiddlewaretoken': csrftoken
             console.log(data);
             sbn.fadeOut(function () {
                 $('.check').hide();  // hide "copied to clipboard" message
@@ -37,7 +40,7 @@ $('#bird_name_form').submit(function () {
                 $('#copy-button').show();
             });
             sbn.fadeIn();
-    });
+    }});
 });
 
 
