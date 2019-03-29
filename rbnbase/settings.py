@@ -10,11 +10,15 @@ https://docs.djangoproject.com/en/1.7/ref/settings/
 """
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+import json
 import os
 
 from django.utils.translation import ugettext_lazy as _
 
 from .logging_settings import LOGGING, BASE_DIR
+
+with open('secrets.txt', 'r') as f:
+    SECRETS = json.load(f)[0]
 
 LOGGING = LOGGING
 # ABS_PATH = os.path.abspath(BASE_DIR)
@@ -24,7 +28,8 @@ LOGGING = LOGGING
 # See https://docs.djangoproject.com/en/1.7/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "-iq0a4$ml&u)p1z_jx$i5y!5nzx(mejk3ho%48*ub+8+4m#@0v"
+# SECRET_KEY = "-iq0a4$ml&u)p1z_jx$i5y!5nzx(mejk3ho%48*ub+8+4m#@0v"
+SECRET_KEY = SECRETS['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -38,8 +43,8 @@ MANAGERS = ADMINS
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = ''
-EMAIL_HOST_PASSWORD = ''
+EMAIL_HOST_USER = SECRETS['EMAIL_HOST_USER']
+EMAIL_HOST_PASSWORD = SECRETS['EMAIL_HOST_PASSWORD']
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL = 'Random Bird name Generator <info@rbgn.recnes.com>'
@@ -84,8 +89,17 @@ WSGI_APPLICATION = 'rbnbase.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        # 'ENGINE': 'django.db.backends.sqlite3',
+        # 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': SECRETS['DBNAME'],
+        'USER': SECRETS['DBUSER'],
+        'PASSWORD': SECRETS['DBPASSWORD'],
+        # 'NAME': 'rbngdb',
+        # 'USER': 'rbngUser1',
+        # 'PASSWORD': 'GWhBYem$qL@9QP$8',
+        'HOST': '127.0.0.1',
+        'PORT': '5432',
     }
 }
 
