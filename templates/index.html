@@ -79,15 +79,14 @@
                     <hr class="star-primary">
                 </div>
                 <div class="col-lg-pull-12 text-center">
-                    <form action="." id="bird_name_form" class="form-inline center-block">{% csrf_token %}
-                        <button class="btn btn-success">
-                            Get A Bird Name
-                            <i class="fa fa-caret-square-o-right"></i>
-                        </button>
-                        <div class="clearfix">&nbsp;</div>
-                        <input type="checkbox" class="checkbox" name="get_scientific" id="get_scientific" value="get_scientific" />
-                        <label for="get_scientific">With Scientific Name</label>
-                    </form>
+                    {% csrf_token %}
+                    <a class="btn btn-success" href="#" id="get_bird_name">
+                        Get A Bird Name
+                        <i class="fa fa-caret-square-o-right"></i>
+                    </a>
+                    <div class="clearfix">&nbsp;</div>
+                    <input type="checkbox" class="checkbox" name="get_scientific" id="get_scientific" value="get_scientific" />
+                    <label for="get_scientific">With Scientific Name</label>
                 </div>
                 <br class="clearfix" />
                 <div style="display: none; background-color: #88e088;" class="col-lg-pull-12 text-center" id="show_bird_name">
@@ -98,7 +97,7 @@
                     <div id="bn_div" class="col">
                         <span id="bird_name" class="h3">&nbsp;</span>&nbsp;&nbsp;
                         <a id="copy-name" title="Click to copy the name to clipboard."
-                                class="btn btn-sm btn-primary" style="margin-top: -10px;"
+                                class="btn btn-sm btn-primary" style="margin-top: -10px;" href="#"
                                 onclick="copyTextToClipboard($('#bird_name').text());">
                             Copy &nbsp; <i class="fa fa-clipboard" aria-hidden="true"></i>
                         </a>
@@ -107,7 +106,7 @@
                         <div class="col">&nbsp;</div>
                         <span id="scientific_name" class="h4" style="margin-top: 5px;">&nbsp;</span>&nbsp;&nbsp;
                         <a id="copy-sci-name" title="Click to copy the scientific name to clipboard."
-                                class="btn btn-xs btn-default"  style="margin-top: -5px;"
+                                class="btn btn-xs btn-default"  style="margin-top: -5px;" href="#"
                                 onclick="copyTextToClipboard($('#scientific_name').text());">
                             Copy &nbsp; <i class="fa fa-clipboard" aria-hidden="true"></i>
                         </a>
