@@ -6,7 +6,7 @@ from django.shortcuts import render
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from rbnapi.models import BirdNameDatabase, GeneralStatistics
+from rbnapi.models import BirdNameDatabase, GeneralStatistics, RequestRecord
 from .serializers import BirdNameSerializer
 
 log = logging.getLogger(__name__)
