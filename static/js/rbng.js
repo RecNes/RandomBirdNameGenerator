@@ -11,29 +11,32 @@ $('#bird_name_form').submit(function () {
     let sn_div = $('#sn_div');
     let sn = $('#scientific_name');
     let sbn = $('#show_bird_name');
-    $.get('/bnapi/', {'format': 'json'}, function (data) { // 'csrfmiddlewaretoken': csrftoken
-        console.log(data);
-        sbn.fadeOut(function () {
-            $('.check').hide();  // hide "copied to clipboard" message
-            bn_div.hide();  // If checkbox unchecked clean object html and hide object
-            bn.html('');
-            sn_div.hide();  // If checkbox unchecked clean object html and hide object
-            sn.html('');
 
-            let splited_data = data.split(",");
+    // $.get('/bnapi/', {'format': 'json'},
+    $.ajax({url: "/bnapi/?format:json"}).then(
+        function (data) { // 'csrfmiddlewaretoken': csrftoken
+            console.log(data);
+            sbn.fadeOut(function () {
+                $('.check').hide();  // hide "copied to clipboard" message
+                bn_div.hide();  // If checkbox unchecked clean object html and hide object
+                bn.html('');
+                sn_div.hide();  // If checkbox unchecked clean object html and hide object
+                sn.html('');
 
-            bn.html(splited_data[0]);
-            bn_div.show();
-            if (sc) {
-                sn.html(splited_data[1]);
-                sn_div.show();
-                cn.html(splited_data[2]);
-            } else {
-                cn.html(splited_data[1]);
-            }
-            $('#copy-button').show();
-        });
-        sbn.fadeIn();
+                let splited_data = data.split(",");
+
+                bn.html(splited_data[0]);
+                bn_div.show();
+                if (sc) {
+                    sn.html(splited_data[1]);
+                    sn_div.show();
+                    cn.html(splited_data[2]);
+                } else {
+                    cn.html(splited_data[1]);
+                }
+                $('#copy-button').show();
+            });
+            sbn.fadeIn();
     });
 });
 
