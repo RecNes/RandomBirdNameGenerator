@@ -20,7 +20,11 @@ class GetBirdName(APIView):
             client_ip = x_forwarded_for.split(',')[0]
         else:
             client_ip = request.META.get('REMOTE_ADDR')
-        GeneralStatistics(bird_name=bn, client_ip=client_ip).save()
+
+        gs, created = GeneralStatistics.objects.get_or_create(bird_name=bn)
+        gs.request_count += 1
+        gs.save()
+        RequestRecord(statistic=gs, client_ip=client_ip).save()
         return GeneralStatistics.objects.count()
 
     def get(self, request):
