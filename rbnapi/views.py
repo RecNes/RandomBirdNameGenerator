@@ -13,7 +13,9 @@ log = logging.getLogger(__name__)
 
 
 class GetBirdName(APIView):
-
+    """
+    Birdname REST APIView
+    """
     def save_general_statistics(self, request, bn):
         x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
         if x_forwarded_for:
@@ -38,6 +40,6 @@ class GetBirdName(APIView):
 
 
 def start_page(request, title="Random Bird Name Generator"):
-    """Site ana sayfası."""
+    """Home page view"""
     content = {'title': title, 'count': GeneralStatistics.objects.count()}
     return render(request, 'index.html', content)
