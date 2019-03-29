@@ -22,4 +22,4 @@ class BirdNameSerializer(serializers.ModelSerializer):
 class GeneralStatisticsSerializer(serializers.ModelSerializer):
     class Meta:
         model = GeneralStatistics
-        fields = ['bird_name', 'client_ip']
+        fields = ['bird_name', ]
