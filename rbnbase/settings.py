@@ -28,7 +28,6 @@ LOGGING = LOGGING
 # See https://docs.djangoproject.com/en/1.7/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-# SECRET_KEY = "-iq0a4$ml&u)p1z_jx$i5y!5nzx(mejk3ho%48*ub+8+4m#@0v"
 SECRET_KEY = SECRETS['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -51,7 +50,7 @@ DEFAULT_FROM_EMAIL = 'Random Bird name Generator <info@rbgn.recnes.com>'
 SERVER_EMAIL = 'server@rbgn.recnes.com'
 EMAIL_SUBJECT_PREFIX = '[ RBNG ]'
 
-ALLOWED_HOSTS = ['vpnhmrt.duckdns.org', '127.0.0.1']
+ALLOWED_HOSTS = SECRETS['ALLOWED_HOSTS'].split(',')
 
 # Application definition
 
@@ -89,17 +88,12 @@ WSGI_APPLICATION = 'rbnbase.wsgi.application'
 
 DATABASES = {
     'default': {
-        # 'ENGINE': 'django.db.backends.sqlite3',
-        # 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': SECRETS['DBNAME'],
         'USER': SECRETS['DBUSER'],
         'PASSWORD': SECRETS['DBPASSWORD'],
-        # 'NAME': 'rbngdb',
-        # 'USER': 'rbngUser1',
-        # 'PASSWORD': 'GWhBYem$qL@9QP$8',
-        'HOST': '127.0.0.1',
-        'PORT': '5432',
+        'HOST': SECRETS['DBHOST'],
+        'PORT': SECRETS['DBPORT'],
     }
 }
 
