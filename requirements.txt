@@ -2,7 +2,7 @@ dj-static==0.0.6
 Django
 dataclasses==0.6
 django-stubs==0.10.2
-djangorestframework==3.9.2
+djangorestframework
 gunicorn==19.9.0
 mypy==0.670
 mypy-extensions==0.4.1
