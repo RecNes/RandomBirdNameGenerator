@@ -55,6 +55,7 @@ ALLOWED_HOSTS = SECRETS['ALLOWED_HOSTS'].split(',')
 # Application definition
 
 INSTALLED_APPS = (
+    'six',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
