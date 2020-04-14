@@ -86,16 +86,22 @@ WSGI_APPLICATION = 'rbnbase.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': SECRETS['DBNAME'],
+default_db = {
+    'ENGINE': 'django.db.backends.sqlite3',
+    'NAME': SECRETS['DBNAME'],
+}
+
+if SECRETS['DBNAME'] in ['postgresql', 'mysql', 'mariadb', 'oracle']:
+    default_db.update({
+        'ENGINE': 'django.db.backends.{}'.format(SECRETS['DBNAME']),
         'USER': SECRETS['DBUSER'],
         'PASSWORD': SECRETS['DBPASSWORD'],
         'HOST': SECRETS['DBHOST'],
         'PORT': SECRETS['DBPORT'],
-    }
-}
+    })
+    
+    
+DATABASES = {defaul_db}
 
 AUTH_PASSWORD_VALIDATORS = [
     {
