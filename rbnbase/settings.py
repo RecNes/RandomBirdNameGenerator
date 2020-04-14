@@ -101,7 +101,7 @@ if SECRETS['DBNAME'] in ['postgresql', 'mysql', 'mariadb', 'oracle']:
     })
     
     
-DATABASES = {defaul_db}
+DATABASES = {default_db}
 
 AUTH_PASSWORD_VALIDATORS = [
     {
