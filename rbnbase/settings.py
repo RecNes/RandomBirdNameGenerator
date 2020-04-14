@@ -86,8 +86,6 @@ WSGI_APPLICATION = 'rbnbase.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
 
-DATABASES = dict()
-
 default_db = {
     'ENGINE': 'django.db.backends.sqlite3',
     'NAME': SECRETS['DBNAME'],
@@ -102,7 +100,7 @@ if SECRETS['DBTYPE'] in ['postgresql', 'mysql', 'mariadb', 'oracle']:
         'PORT': SECRETS['DBPORT'],
     })
     
-DATABASES.update(default_db)
+DATABASES = {'default': default_db}
 
 AUTH_PASSWORD_VALIDATORS = [
     {
