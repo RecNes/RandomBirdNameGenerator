@@ -91,7 +91,7 @@ default_db = {
     'NAME': SECRETS['DBNAME'],
 }
 
-if SECRETS['DBNAME'] in ['postgresql', 'mysql', 'mariadb', 'oracle']:
+if SECRETS['DBTYPE'] in ['postgresql', 'mysql', 'mariadb', 'oracle']:
     default_db.update({
         'ENGINE': 'django.db.backends.{}'.format(SECRETS['DBNAME']),
         'USER': SECRETS['DBUSER'],
