@@ -18,8 +18,6 @@
     <meta name="theme-color" content="#ffffff">
 
     <title>{{ title }}</title>
-{#    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"#}
-{#          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">#}
     <link href="{{ STATIC_URL }}css/bootstrap.min.css" rel="stylesheet">
     <link href="{{ STATIC_URL }}css/freelancer.css" rel="stylesheet">
     <link href="{{ STATIC_URL }}font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -30,6 +28,31 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <style>
+        .urlLink:link {
+          color: white;
+          background-color: transparent;
+          text-decoration: none;
+        }
+
+        .urlLink:visited {
+          color: white;
+          background-color: transparent;
+          text-decoration: none;
+        }
+
+        .urlLink:hover {
+          color: gray;
+          background-color: transparent;
+          text-decoration: none;
+        }
+
+        .urlLink:active {
+          color: white;
+          background-color: transparent;
+          text-decoration: none;
+        }
+    </style>
 </head>
 
 <body id="page-top" class="index">
@@ -155,9 +178,8 @@
                     <p>
                         The API of this service is stil under development. The websites generally wants to provide
                         the anonymity to their new registered users can be able to use this API
-                        (<a href="https://rbng.recnes.com/bnapi">https://rbng.recnes.com/bnapi</a>). Registration will
-                        be required to use API soon. During the registration process, you can create a user account
-                        before hit to the API and get a random bird name as a nickname for new registrations.
+                        (<a href="https://rbng.recnes.com/bnapi" class="urlLink">https://rbng.recnes.com/bnapi</a>).
+                        API usages are restricted to 10 request per hour.
                     </p>
                 </div>
             </div>
