@@ -30,8 +30,12 @@ LOGGING = LOGGING
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = SECRETS['SECRET_KEY']
 
+ALLOWED_HOSTS = SECRETS['ALLOWED_HOSTS'].split(',')
+
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
+if "120.0.0.1" in ALLOWED_HOSTS:
+    DEBUG = True
 DEBUG_PROPAGATE_EXCEPTIONS = DEBUG
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
@@ -51,8 +55,6 @@ EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL = 'Random Bird name Generator <info@rbgn.recnes.com>'
 SERVER_EMAIL = 'server@rbgn.recnes.com'
 EMAIL_SUBJECT_PREFIX = '[ RBNG ]'
-
-ALLOWED_HOSTS = SECRETS['ALLOWED_HOSTS'].split(',')
 
 # Application definition
 
