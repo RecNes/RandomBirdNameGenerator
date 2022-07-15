@@ -39,7 +39,8 @@ class GetBirdName(APIView):
         ).count()
         return request_count >= 10
 
-    def save_general_statistics(self, client_ip, bn):
+    @staticmethod
+    def save_general_statistics(client_ip, bn):
         gs, created = GeneralStatistics.objects.get_or_create(bird_name=bn)
         gs.request_count += 1
         gs.save()
