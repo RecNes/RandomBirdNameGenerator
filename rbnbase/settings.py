@@ -13,7 +13,7 @@ https://docs.djangoproject.com/en/1.7/ref/settings/
 import json
 import os
 
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 
 from .logging_settings import LOGGING, BASE_DIR
 
@@ -33,6 +33,8 @@ SECRET_KEY = SECRETS['SECRET_KEY']
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 DEBUG_PROPAGATE_EXCEPTIONS = DEBUG
+
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 ADMINS = (
     ('Sencer Hamarat', 'sencerhamarat@gmail.com'),
