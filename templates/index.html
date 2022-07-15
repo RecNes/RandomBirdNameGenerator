@@ -7,11 +7,11 @@
     <meta name="description" content="Random bird name generator for anonymity">
     <meta name="author" content="Sencer Hamarat">
 
-    <link rel="apple-touch-icon" sizes="180x180" href="{{ STATIC_URL }}favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="{{ STATIC_URL }}favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ STATIC_URL }}favicon/favicon-16x16.png">
-    <link rel="manifest" href="{{ STATIC_URL }}/favicon/site.webmanifest">
-    <link rel="mask-icon" href="{{ STATIC_URL }}/favicon/safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://{{ STATIC_URL }}favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://{{ STATIC_URL }}favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://{{ STATIC_URL }}favicon/favicon-16x16.png">
+    <link rel="manifest" href="https://{{ STATIC_URL }}/favicon/site.webmanifest">
+    <link rel="mask-icon" href="https://{{ STATIC_URL }}/favicon/safari-pinned-tab.svg" color="#5bbad5">
     <meta name="apple-mobile-web-app-title" content="Random Bird Name Generator">
     <meta name="application-name" content="Random Bird Name Generator">
     <meta name="msapplication-TileColor" content="#00aba9">
@@ -20,11 +20,11 @@
     <title>{{ title }}</title>
 {#    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"#}
 {#          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">#}
-    <link href="{{ STATIC_URL }}css/bootstrap.min.css" rel="stylesheet">
-    <link href="{{ STATIC_URL }}css/freelancer.css" rel="stylesheet">
-    <link href="{{ STATIC_URL }}font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
-    <link href="http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="https://{{ STATIC_URL }}css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://{{ STATIC_URL }}css/freelancer.css" rel="stylesheet">
+    <link href="https://{{ STATIC_URL }}font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -70,11 +70,11 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <img class="img-responsive" src="{{ STATIC_URL }}img/bird_name_256.png" alt="random bird name generator">
+                    <img class="img-responsive" src="https://{{ STATIC_URL }}img/bird_name_256.png" alt="random bird name generator">
                     <div class="intro-text">
                         <span class="name">Random Bird name Generator</span>
                         <hr class="star-light">
-                        <span class="skills">For who wants to be stay anonymous</span>
+                        <span class="skills">For who wants to stay anonymous</span>
                     </div>
                 </div>
             </div>
@@ -109,7 +109,7 @@
                     <div id="bn_div" class="col">
                         <span id="bird_name" class="h3">&nbsp;</span>&nbsp;&nbsp;
                         <button id="copy-name" title="Click to copy the name to clipboard."
-                                class="btn btn-sm btn-primary" style="margin-top: -10px;" href="#"
+                                class="btn btn-sm btn-primary" style="margin-top: -10px;"
                                 onclick="copyTextToClipboard($('#bird_name').text());">
                             Copy &nbsp; <i class="fa fa-clipboard" aria-hidden="true"></i>
                         </button>
@@ -118,7 +118,7 @@
                         <div class="col">&nbsp;</div>
                         <span id="scientific_name" class="h4" style="margin-top: 5px;">&nbsp;</span>&nbsp;&nbsp;
                         <button id="copy-sci-name" title="Click to copy the scientific name to clipboard."
-                                class="btn btn-xs btn-default"  style="margin-top: -5px;" href="#"
+                                class="btn btn-xs btn-default"  style="margin-top: -5px;"
                                 onclick="copyTextToClipboard($('#scientific_name').text());">
                             Copy &nbsp; <i class="fa fa-clipboard" aria-hidden="true"></i>
                         </button>
@@ -143,7 +143,7 @@
                     <h4>The Website Service</h4>
                     <br />
                     <p>
-                        This is the free service for who wants to stay anonymous, but lazy to create a nick name. Random
+                        This is the free service for who wants to stay anonymous, but lazy to create a nickname. Random
                         Bird Name Generator is exactly for those people who are do not want waste their time to create
                         an anonymous nickname. Just press button above, and Random Bird Name Generator does the magic
                         for you and give you a nickname. Then start to use your anonymous name where ever you want.
@@ -153,11 +153,11 @@
                     <h4>The API Service (Coming Soon!)</h4>
                     <br />
                     <p>
-                        The API of this service is still under development. The websites which want to be provide
-                        anonymity to their new registered users can be able to use this API
-                        (http://rbng.recnes.com/bnapi). Registration will be required to use API soon.
-                        During the registration process, you can create an user account before hit to the API and get a
-                        random bird name as a nickname for new registrations.
+                        The API of this service is stil under development. The websites generally wants to provide
+                        the anonymity to their new registered users can be able to use this API
+                        (<a href="https://rbng.recnes.com/bnapi">https://rbng.recnes.com/bnapi</a>). Registration will
+                        be required to use API soon. During the registration process, you can create a user account
+                        before hit to the API and get a random bird name as a nickname for new registrations.
                     </p>
                 </div>
             </div>
@@ -176,16 +176,16 @@
                         <h3>Technologies Used</h3>
                         <ul class="list-inline">
                             <li>
-                                <a href="https://www.python.org" class="btn-social btn-outline"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Python-logo-notext.svg/200px-Python-logo-notext.svg.png" width=50 /></a>
+                                <a href="https://www.python.org" class="btn-social btn-outline"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Python-logo-notext.svg/200px-Python-logo-notext.svg.png" width=50 alt="python" /></a>
                             </li>
                             <li>
-                                <a href="https://www.djangoproject.com" class="btn-social btn-outline"><img src="https://pbs.twimg.com/profile_images/544873453346500608/4aGjtNQv_400x400.png" width=50 /></a>
+                                <a href="https://www.djangoproject.com" class="btn-social btn-outline"><img src="https://pbs.twimg.com/profile_images/544873453346500608/4aGjtNQv_400x400.png" width=50 alt="django" /></a>
                             </li>
                         </ul>
                     </div>
                     <div class="footer-col col-md-4">
                         <h3>About Developer</h3>
-                        <p>Random Bird Name Generator for anonymity created by <a href="http://recnes.com">Sencer Hamarat</a>.</p>
+                        <p>Random Bird Name Generator for anonymity created by <a href="https://recnes.com">Sencer Hamarat</a>.</p>
                         <p><a href="https://www.youtube.com/watch?v=ODIvONHPqpk" target="_blank"><i class="fa fa-bug"></i> The Beatles - Free As A Bird</a></p>
                     </div>
                 </div>
@@ -212,7 +212,7 @@
 
     <!-- jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="{{ STATIC_URL }}js/jquery.cookie.js"></script>
+    <script src="https://{{ STATIC_URL }}js/jquery.cookie.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
@@ -224,17 +224,17 @@
 {#    <script src="{{ STATIC_URL }}js/bootstrap.min.js"></script>#}
 
     <!-- Plugin JavaScript -->
-    <script src="{{ STATIC_URL }}js/rbng.js"></script>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
-    <script src="{{ STATIC_URL }}js/classie.js"></script>
-    <script src="{{ STATIC_URL }}js/cbpAnimatedHeader.js"></script>
+    <script src="https://{{ STATIC_URL }}js/rbng.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+    <script src="https://{{ STATIC_URL }}js/classie.js"></script>
+    <script src="https://{{ STATIC_URL }}js/cbpAnimatedHeader.js"></script>
 
     <!-- Contact Form JavaScript -->
 {#    <script src="{{ STATIC_URL }}js/jqBootstrapValidation.js"></script>#}
 {#    <script src="{{ STATIC_URL }}js/contact_me.js"></script>#}
 
     <!-- Custom Theme JavaScript -->
-    <script src="{{ STATIC_URL }}js/freelancer.js"></script>
+    <script src="https://{{ STATIC_URL }}js/freelancer.js"></script>
 
     <!-- Clipboard JavaScript -->
     <script>

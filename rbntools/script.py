@@ -75,31 +75,34 @@ class ExtractValuesFromRemotePage(object):
 class WikiTurkiye(ExtractValuesFromRemotePage):
     def __init__(self):
         ExtractValuesFromRemotePage.__init__(self)
-        self.url = "http://tr.wikipedia.org/wiki/T%C3%BCrkiye_ku%C5%9Flar_listesi"
-        # self.rgx = '<li><a\shref="/wiki/\w+"\stitle="[\w\s]+"\sclass="mw-redirect">([\w\s]+)</.*?\s\(<i>([\w\s]+)</i>\).*?/li>'
-        self.rgx = '<li><a\shref="/wiki/[\w_]+"\stitle="[\w\s]+"\sclass="mw-redirect">(.*?)</.*?\s\(<i>([\w\s\'\-]+)</i>\).*?/li>'
+        self.url = "https://tr.wikipedia.org/wiki/T%C3%BCrkiye_ku%C5%9Flar_listesi"
+        # self.rgx = '<li><a\shref="/wiki/\w+"\stitle="[\w\s]+"\sclass="mw-redirect">([\w\s]+)</.*?\s\(<i>([
+        # \w\s]+)</i>\).*?/li>'
+        self.rgx = r'<li><a\shref="/wiki/[\w_]+"\stitle="[\w\s]+"\sclass="mw-redirect">(.*?)</.*?\s\(<i>([' \
+                   r'\w\s\'\-]+)</i>\).*?/li>'
         self.file_name = self.class_name()
 
 
 class WikiLOBOTW(WikiTurkiye):
     def __init__(self):
         WikiTurkiye.__init__(self)
-        self.url = "http://en.wikipedia.org/wiki/List_of_birds_of_the_world"
-        # self.rgx = '<li><i><a\shref="/wiki/[\w_]+"\stitle="[\w\s]+"\sclass="mw-redirect">([\w\s]+)</.*?/i>([\w\s]+)<.*?li>'
-        self.rgx = '<li><i><a\shref="/wiki/[\w_]+"\stitle="[\w\s]+"\sclass="mw-redirect">([\w\s]+)</a></i>\s([\w\s\'\-]+).*?/li>'
+        self.url = "https://en.wikipedia.org/wiki/List_of_birds_of_the_world"
+        # self.rgx = '<li><i><a\shref="/wiki/[\w_]+"\stitle="[\w\s]+"\sclass="mw-redirect">([\w\s]+)</.*?/i>([
+        # \w\s]+)<.*?li>'
+        self.rgx = r'<li><i><a\shref="/wiki/[\w_]+"\stitle="[\w\s]+"\sclass="mw-redirect">([\w\s]+)</a></i>\s([' \
+                   r'\w\s\'\-]+).*?/li>'
         self.file_name = self.class_name()
 
 
 class SibleyAndMonroe(WikiTurkiye):
     def __init__(self):
         WikiTurkiye.__init__(self)
-        self.url = "http://ces.iisc.ernet.in/hpg/envis/sibleydoc63.html"
+        self.url = "https://ces.iisc.ernet.in/hpg/envis/sibleydoc63.html"
         # self.rgx = "^\s+?\d{1,3}\s+\d{1,4}([\w\s\'-]+)\s+([\w\s\'-]+)$"
-        self.rgx = "\d{1,3}\s{1,4}\d{1,4}\s(\w+\s\w+\s?\w+?)\s+([\w\'-]+\s[\D\w\'-]+\s?[\D\w\'-]+?)"
+        self.rgx = r"\d{1,3}\s{1,4}\d{1,4}\s(\w+\s\w+\s?\w+?)\s+([\w\'-]+\s[\D\w\'-]+\s?[\D\w\'-]+?)"
         self.file_name = self.class_name()
 
     def read_file(self):
-        text = str()
         with open("temp/{}_html.txt".format(self.file_name), "r") as bn:
             return bn.readlines()
 
@@ -127,7 +130,7 @@ class SibleyAndMonroe(WikiTurkiye):
 class AllaboutbirdsOrg(ExtractValuesFromRemotePage):
     def __init__(self):
         ExtractValuesFromRemotePage.__init__(self)
-        self.base_url = "http://www.allaboutbirds.org/guide/browse.aspx?name="
+        self.base_url = "https://www.allaboutbirds.org/guide/browse.aspx?name="
         self.alphabet = list(string.ascii_lowercase)
         self.rgx = "</span></div><h2><a\shref=\".*?\">(.*?)</a>\s<em>(.*?)</em></h2><div id='browse_links'>"
         self.file_name = self.class_name()

@@ -16,7 +16,9 @@ class GetBirdName(APIView):
     """
     Birdname REST APIView
     """
-    def save_general_statistics(self, request, bn):
+
+    @staticmethod
+    def save_general_statistics(request, bn):
         x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
         if x_forwarded_for:
             client_ip = x_forwarded_for.split(',')[0]
@@ -34,7 +36,7 @@ class GetBirdName(APIView):
         index = randint(0, count)
         bn = BirdNameDatabase.objects.all()[index]
         serialized = BirdNameSerializer(bn, many=False)
-        count = self.save_general_statistics(request, bn)
+        self.save_general_statistics(request, bn)
         log.info("{} / {}".format(bn.bird_name, bn.scientific_name.scientific_name))
         return Response(serialized.data)
 

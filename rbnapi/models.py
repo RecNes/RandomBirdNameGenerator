@@ -1,7 +1,5 @@
 # coding: utf-8
-from django.core.signals import request_finished
 from django.db import models
-from django.dispatch import receiver
 
 
 class ScientificName(models.Model):
@@ -44,10 +42,4 @@ class RequestRecord(models.Model):
 
     class Meta:
         ordering = ['created', ]
-
-
-@receiver(request_finished, sender=RequestRecord)
-def update_general_statistic(sender, environ, **kwargs):
-    print(environ)
-
 
