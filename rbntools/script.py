@@ -27,14 +27,14 @@ class ExtractValuesFromRemotePage(object):
         try:
             return re.compile(self.rgx, re.UNICODE).findall(self.the_page)
         except Exception:
-            raise Exception(u'{} regex throws error'.format(self.rgx))
+            raise Exception(f'{self.rgx} regex throws error')
 
     def make_connection(self):
         self.the_page = None
         req = Request(self.url)
         response = urlopen(req)
         self.the_page = response.read()
-        with open("temp/{}_html.txt".format(self.file_name), "w+") as wp:
+        with open(f"temp/{self.file_name}_html.txt", "w+") as wp:
             wp.writelines(self.the_page)
 
     def save_to_database(self):
@@ -45,10 +45,8 @@ class ExtractValuesFromRemotePage(object):
                 bird_name = item[1].strip()
                 scientific_name = item[0].strip()
                 if not len(BirdNameDatabase.objects.filter(bird_name=bird_name)):
-                    db_sc = ScientificName(scientific_name=scientific_name)
-                    db_sc.save()
-                    db = BirdNameDatabase(bird_name=bird_name, scientific_name=db_sc)
-                    db.save()
+                    scientific_name_record = ScientificName.objects.create(scientific_name=scientific_name)
+                    BirdNameDatabase.objects.create(bird_name=bird_name, scientific_name=scientific_name_record)
                 else:
                     duplicate_items.append(item)
                 self.bird_names = duplicate_items
@@ -60,16 +58,16 @@ class ExtractValuesFromRemotePage(object):
 
     def write_into_file(self):
         text = str()
-        with open("temp/{}.txt".format(self.file_name), "w+") as bn:
+        with open(f"temp/{self.file_name}.txt", "w+") as bn:
             for bnt in self.bird_names:
-                text += "{}\r\n".format(repr(bnt))
+                text += f"{repr(bnt)}\r\n"
             bn.writelines(text)
 
     def run(self):
         self.make_connection()
-        # self.bird_names = self.re_machine()
-        # self.write_into_file()
-        # self.save_to_database()
+        self.bird_names = self.re_machine()
+        self.write_into_file()
+        self.save_to_database()
 
 
 class WikiTurkiye(ExtractValuesFromRemotePage):
@@ -103,7 +101,7 @@ class SibleyAndMonroe(WikiTurkiye):
         self.file_name = self.class_name()
 
     def read_file(self):
-        with open("temp/{}_html.txt".format(self.file_name), "r") as bn:
+        with open(f"temp/{self.file_name}_html.txt", "r") as bn:
             return bn.readlines()
 
     def run(self):
@@ -134,27 +132,23 @@ class AllaboutbirdsOrg(ExtractValuesFromRemotePage):
         self.alphabet = list(string.ascii_lowercase)
         self.rgx = "</span></div><h2><a\shref=\".*?\">(.*?)</a>\s<em>(.*?)</em></h2><div id='browse_links'>"
         self.file_name = self.class_name()
-        self.counter = 0
 
     def save_to_database(self):
         for item in self.bird_names:
             try:
                 bird_name = item[0].strip()
                 scientific_name = item[1].strip()
-                db_sc = ScientificName(scientific_name=scientific_name)
-                db_sc.save()
-                db = BirdNameDatabase(bird_name=bird_name, scientific_name=db_sc)
-                db.save()
+                scientific_name_record = ScientificName.objects.create(scientific_name=scientific_name)
+                BirdNameDatabase.objects.create(bird_name=bird_name, scientific_name=scientific_name_record)
             except Exception as e:
                 print(e)
                 log.exception(e)
                 pass
 
     def run(self):
-        for url_extention in self.alphabet:
-            self.url = "{}{}".format(self.base_url, url_extention)
+        for url_extension in self.alphabet:
+            self.url = f"{self.base_url}{url_extension}"
             self.make_connection()
             self.bird_names += self.re_machine()
-            self.counter += 1
         self.write_into_file()
         self.save_to_database()
