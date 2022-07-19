@@ -98,7 +98,7 @@ default_db = {
 
 if SECRETS['DBTYPE'] in ['postgresql', 'mysql', 'mariadb', 'oracle']:
     default_db.update({
-        'ENGINE': 'django.db.backends.{}'.format(SECRETS['DBTYPE']),
+        'ENGINE': f"django.db.backends.{SECRETS['DBTYPE']}",
         'USER': SECRETS['DBUSER'],
         'PASSWORD': SECRETS['DBPASSWORD'],
         'HOST': SECRETS['DBHOST'],
@@ -133,7 +133,7 @@ USE_TZ = True
 TIME_ZONE = 'UTC'
 DATE_FORMAT = '%d/%m/%Y, %D'
 TIME_FORMAT = '%H:%i'
-DATETIME_FORMAT = '%d/%m/%Y, %D %H:%i'
+DATETIME_FORMAT = '%d/%m/%Y, %a %H:%M:%S.%f'
 SHORT_DATE_FORMAT = '%d/%m/%Y'
 SHORT_DATETIME_FORMAT = '%d/%m/%Y %H:%i'
 DATE_INPUT_FORMATS = ("%Y-%m-%d", "%Y/%m/%d", "%d/%m/%Y", "%d-%m-%Y")
