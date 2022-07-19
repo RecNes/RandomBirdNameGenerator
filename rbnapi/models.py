@@ -7,7 +7,10 @@ class ScientificName(models.Model):
     scientific_name = models.TextField(verbose_name=u"Scientific Name", unique=True)
 
     def __str__(self):
-        return self.scientific_name
+        return f"{self.scientific_name}".title()
+
+    class Meta:
+        ordering = ["-scientific_name"]
 
 
 class BirdNameDatabase(models.Model):
@@ -15,9 +18,10 @@ class BirdNameDatabase(models.Model):
     bird_name = models.TextField(verbose_name=u"Bird Name", unique=True)
 
     def __str__(self):
-        return self.bird_name
+        return f"{self.bird_name}".title()
 
     class Meta:
+        ordering = ["-bird_name"]
         unique_together = ("bird_name", "scientific_name")
 
 
@@ -27,10 +31,10 @@ class GeneralStatistics(models.Model):
     updated = models.DateTimeField(verbose_name=u"Last Update", auto_now=True)
 
     def __str__(self):
-        return self.updated.strftime(settings.DATETIME_FORMAT) if self.updated else ""
+        return f"{self.bird_name}".title()
 
     class Meta:
-        ordering = ['updated', ]
+        ordering = ['-updated', ]
 
 
 class RequestRecord(models.Model):
@@ -39,8 +43,8 @@ class RequestRecord(models.Model):
     created = models.DateTimeField(verbose_name=u"Request Date", auto_now_add=True)
 
     def __str__(self):
-        return self.created.strftime(settings.DATETIME_FORMAT) if self.created else ""
+        return f"{self.client_ip}"
 
     class Meta:
-        ordering = ['created', ]
+        ordering = ['-created', ]
 
