@@ -1,5 +1,4 @@
 # coding: utf-8
-import logging
 from datetime import timedelta
 from random import randint
 
@@ -10,9 +9,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from rbnapi.models import BirdNameDatabase, GeneralStatistics, RequestRecord
-from .serializers import BirdNameSerializer
-
-log = logging.getLogger(__name__)
+from rbnapi.serializers import BirdNameSerializer
 
 
 class GetBirdName(APIView):
@@ -44,7 +41,7 @@ class GetBirdName(APIView):
         gs, created = GeneralStatistics.objects.get_or_create(bird_name=bn)
         gs.request_count += 1
         gs.save()
-        RequestRecord(statistic=gs, client_ip=client_ip).save()
+        RequestRecord.objects.create(statistic=gs, client_ip=client_ip)
         return GeneralStatistics.objects.count()
 
     def get(self, request):
@@ -57,7 +54,6 @@ class GetBirdName(APIView):
         bn = BirdNameDatabase.objects.all()[index]
         serialized = BirdNameSerializer(bn, many=False)
         self.save_general_statistics(client_ip, bn)
-        log.info("{} / {}".format(bn.bird_name, bn.scientific_name.scientific_name))
         return Response(serialized.data)
 
 
