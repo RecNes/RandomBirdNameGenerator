@@ -5,8 +5,11 @@ import os
 
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
-log_path = os.path.join(BASE_DIR, 'logs/')
 
+log_path = os.path.join(BASE_DIR, 'logs/')
+os.makedirs(log_path, exist_ok=True)
+
+    
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
