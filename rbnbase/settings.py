@@ -104,7 +104,7 @@ if SECRETS['DBTYPE'] in ['postgresql', 'mysql', 'mariadb', 'oracle']:
         'HOST': SECRETS['DBHOST'],
         'PORT': SECRETS['DBPORT'],
     })
-    
+
 DATABASES = {'default': default_db}
 
 AUTH_PASSWORD_VALIDATORS = [
