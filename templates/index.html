@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -194,10 +196,10 @@
                         <h3>Technologies Used</h3>
                         <ul class="list-inline">
                             <li>
-                                <a href="https://www.python.org" class="btn-social btn-outline"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Python-logo-notext.svg/200px-Python-logo-notext.svg.png" width=50 alt="python" /></a>
+                                <a href="https://www.python.org" class="btn-social btn-outline"><img src="{% static 'images/python.png' %}" width=45 alt="python" style="margin-top: -3px;"/></a>
                             </li>
                             <li>
-                                <a href="https://www.djangoproject.com" class="btn-social btn-outline"><img src="https://pbs.twimg.com/profile_images/544873453346500608/4aGjtNQv_400x400.png" width=50 alt="django" /></a>
+                                <a href="https://www.djangoproject.com" class="btn-social btn-outline"><img src="{% static 'images/django.png' %}" width=46 alt="django" style="margin-top: -3px;" /></a>
                             </li>
                         </ul>
                     </div>
