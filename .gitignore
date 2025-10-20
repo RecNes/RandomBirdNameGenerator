@@ -149,3 +149,4 @@ static_files/
 secrets.txt
 Procfile
 runtime.txt
+assets/
